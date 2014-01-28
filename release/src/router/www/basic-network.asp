@@ -1551,10 +1551,11 @@ No part of this file may be used without permission.
 		<input type="hidden" name="lan_state">
 		<input type="hidden" name="lan_desc">
 		<input type="hidden" name="lan_invert">
+		<div id="extraInputs"></div>
 
 		<!-- VLAN-BEGIN -->
 		<script type="text/javascript">
-			var thisForm = $('form #_fom');
+			var thisForm = $('#extraInputs');
 			for (var i = 0 ; i <= MAX_BRIDGE_ID ; i++) {
 				var j = (i == 0) ? '' : i.toString();
 				$(thisForm).append('<input type=\'hidden\' id=\'lan' + j + '_ifname\' name=\'lan' + j + '_ifname\'>');
