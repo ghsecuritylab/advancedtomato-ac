@@ -8,6 +8,9 @@
 		<title>[<% ident(); %>]: Basic</title>
 		<link href="css/reset.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<% css(); %>
+		
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="tomato.js"></script>
 		<script type="text/javascript" src="js/advancedtomato.js"></script>

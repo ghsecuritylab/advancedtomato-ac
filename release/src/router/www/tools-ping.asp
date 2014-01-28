@@ -109,8 +109,8 @@ No part of this file may be used without permission.
 
 			e = E('_f_addr');
 			s = e.value.trim();
-			if (!s.match(/^[\w\.-]+$/)) {
-				ferror.set(e, 'Invalid address', quiet);
+			if (!s.match(/^[\w\-\.\:]+$/)) {
+				ferror.set(e, 'Invalid hostname/address', quiet);
 				return 0;
 			}
 			ferror.clear(e);

@@ -106,8 +106,8 @@ No part of this file may be used without permission.
 
 			e = E('_f_addr');
 			s = e.value.trim();
-			if (!s.match(/^[\w\.-]+$/)) {
-				ferror.set(e, 'Invalid address', quiet);
+			if (!s.match(/^[\w\-\.\:]+$/)) {
+				ferror.set(e, 'Invalid hostname/address', quiet);
 				return 0;
 			}
 			ferror.clear(e);
@@ -184,7 +184,7 @@ No part of this file may be used without permission.
 					suffix: ' <button type="submit" value="Trace" onclick="trace()" id="traceb" class="btn">Trace <i class="icon-gauge"></i></button>' },
 				{ title: 'Maximum Hops', name: 'f_hops', type: 'text', maxlen: 2, size: 4, value: '20' },
 				{ title: 'Maximum Wait Time', name: 'f_wait', type: 'text', maxlen: 2, size: 4, value: '3', suffix: ' <small>(seconds per hop)</small>' }
-			], '.sectiontrace', 'data-table other');
+				], '.sectiontrace', 'data-table other');
 		</script>
 	</div>
 
