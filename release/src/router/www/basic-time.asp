@@ -125,7 +125,7 @@ No part of this file may be used without permission.
 		</script>
 
 			<form id="_fom" method="post" action="tomato.cgi">
-				<input type="hidden" name="_nextpage" value="basic-time.asp">
+				<input type="hidden" name="_nextpage" value="/#basic-time.asp">
 				<input type="hidden" name="_nextwait" value="5">
 				<input type="hidden" name="_service" value="ntpc-restart">
 				<input type="hidden" name="_sleep" value="3">

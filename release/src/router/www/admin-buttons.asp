@@ -49,7 +49,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-	<input type="hidden" name="_nextpage" value="admin-buttons.asp">
+	<input type="hidden" name="_nextpage" value="/#admin-buttons.asp">
 	<input type="hidden" name="sesx_led" value="0">
 
 	<div id="sesdiv" style="display:none">

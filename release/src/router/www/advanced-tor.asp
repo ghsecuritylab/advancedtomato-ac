@@ -86,7 +86,7 @@ No part of this file may be used without permission.
  
 			<div class="section" id="config-section">
 				<form id="_fom" method="post" action="tomato.cgi">
-				<input type="hidden" name="_nextpage" value="advanced-tor.asp">
+				<input type="hidden" name="_nextpage" value="/#advanced-tor.asp">
 				<input type="hidden" name="_service" value="tor-restart">
 				<input type="hidden" name="tor_enable">
 				<script type="text/javascript">

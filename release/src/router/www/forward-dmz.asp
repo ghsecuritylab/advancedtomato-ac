@@ -84,7 +84,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="forward-dmz.asp">
+		<input type="hidden" name="_nextpage" value="/#forward-dmz.asp">
 		<input type="hidden" name="_service" value="firewall-restart">
 
 		<input type="hidden" name="dmz_enable">

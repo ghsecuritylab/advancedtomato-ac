@@ -161,7 +161,7 @@ No part of this file may be used without permission.
 
 	<form id="_fom" action="wakeup.cgi" method="post">
 
-		<input type="hidden" name="_redirect" value="tools-wol.asp">
+		<input type="hidden" name="_redirect" value="/#tools-wol.asp">
 		<input type="hidden" name="_nextwait" value="1">
 		<input type="hidden" name="mac" value="" id="_mac">
 

@@ -305,7 +305,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="basic-static.asp">
+		<input type="hidden" name="_nextpage" value="/#basic-static.asp">
 		<input type="hidden" name="_service" value="dhcpd-restart,arpbind-restart,cstats-restart">
 
 		<input type="hidden" name="dhcpd_static">

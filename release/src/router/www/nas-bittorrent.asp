@@ -202,7 +202,7 @@ No part of this file may be used without permission.
 	<h3>Basic Settings</h3>
 	<div class="section" id="config-section">
 		<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="nas-bittorrent.asp">
+		<input type="hidden" name="_nextpage" value="/#nas-bittorrent.asp">
 		<input type="hidden" name="_service" value="bittorrent-restart">
 		<input type="hidden" name="bt_enable">
 		<input type="hidden" name="bt_incomplete">

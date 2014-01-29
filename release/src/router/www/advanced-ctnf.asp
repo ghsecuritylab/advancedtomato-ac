@@ -154,7 +154,7 @@ No part of this file may be used without permission.
 		</script>
 
 			<form id="_fom" method="post" action="tomato.cgi">
-			<input type="hidden" name="_nextpage" value="advanced-ctnf.asp">
+			<input type="hidden" name="_nextpage" value="/#advanced-ctnf.asp">
 			<input type="hidden" name="_service" value="ctnf-restart">
 			<input type="hidden" name="ct_tcp_timeout" value="">
 			<input type="hidden" name="ct_udp_timeout" value="">

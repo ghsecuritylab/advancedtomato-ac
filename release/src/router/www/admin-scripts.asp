@@ -75,7 +75,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-	<input type="hidden" name="_nextpage" value="admin-scripts.asp">
+	<input type="hidden" name="_nextpage" value="/#admin-scripts.asp">
 
 	<script type="text/javascript">
 		$('.scriptsetc').append(tabCreate.apply(this, tabs));

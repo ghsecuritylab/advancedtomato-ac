@@ -203,7 +203,7 @@ No part of this file may be used without permission.
 		</script>
 
 			<form id="_fom" method="post" action="tomato.cgi">
-				<input type="hidden" name="_nextpage" value="forward-upnp.asp">
+				<input type="hidden" name="_nextpage" value="/#forward-upnp.asp">
 				<input type="hidden" name="_service" value="upnp-restart">
 
 				<input type="hidden" name="upnp_enable">

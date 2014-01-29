@@ -25,7 +25,7 @@ No part of this file may be used without permission.
 
 	<form id="_fom" method="post" action="tomato.cgi">
 
-		<input type="hidden" name="_nextpage" value="basic.asp">
+		<input type="hidden" name="_nextpage" value="/#basic.asp">
 		<input type="hidden" name="_service" value="*">
 
 		<div id="identification" class="section">

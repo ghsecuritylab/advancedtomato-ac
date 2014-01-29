@@ -185,7 +185,7 @@ No part of this file may be used without permission.
 
 	<div class="section" id="config-section">
 		<form id="_fom" method="post" action="tomato.cgi">
-			<input type="hidden" name="_nextpage" value="admin-iptraffic.asp">
+			<input type="hidden" name="_nextpage" value="/#admin-iptraffic.asp">
 			<input type="hidden" name="_service" value="cstats-restart">
 			<input type="hidden" name="cstats_enable">
 			<input type="hidden" name="cstats_path">

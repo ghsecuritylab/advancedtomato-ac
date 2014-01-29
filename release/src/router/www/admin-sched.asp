@@ -220,7 +220,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form name="_fom" id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="admin-sched.asp">
+		<input type="hidden" name="_nextpage" value="/#admin-sched.asp">
 		<input type="hidden" name="_service" value="sched-restart">
 		<input type="hidden" name="sch_rboot" value="">
 		<input type="hidden" name="sch_rcon" value="">

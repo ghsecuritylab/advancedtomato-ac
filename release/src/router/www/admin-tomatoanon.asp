@@ -30,7 +30,7 @@ No part of this file may be used without permission.
 		</script>
 
 			<form id="_fom" method="post" action="tomato.cgi">
-				<input type="hidden" name="_nextpage" value="admin-tomatoanon.asp">
+				<input type="hidden" name="_nextpage" value="/#admin-tomatoanon.asp">
 				<input type="hidden" name="_service" value="tomatoanon-restart">
 
 				<div class="span8"> 

@@ -91,7 +91,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="advanced-dhcpdns.asp">
+		<input type="hidden" name="_nextpage" value="/#advanced-dhcpdns.asp">
 		<input type="hidden" name="_service" value="">
 
 		<input type="hidden" name="dhcpd_dmdns">

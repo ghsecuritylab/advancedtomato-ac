@@ -107,7 +107,7 @@ No part of this file may be used without permission.
 
 	<div class="section" id="config-section">
 		<form id="_fom" method="post" action="tomato.cgi">
-			<input type="hidden" name="_nextpage" value="advanced-splashd.asp">
+			<input type="hidden" name="_nextpage" value="/#advanced-splashd.asp">
 			<input type="hidden" name="_service" value="splashd-restart">
 			<input type="hidden" name="NC_enable">
 			<input type="hidden" name="NC_ForcedRedirect">

@@ -174,7 +174,7 @@ No part of this file may be used without permission.
 
 	<div class="section" id="config-section">
 		<form id="_fom" method="post" action="tomato.cgi">
-			<input type="hidden" name="_nextpage" value="admin-bwm.asp">
+			<input type="hidden" name="_nextpage" value="/#admin-bwm.asp">
 			<input type="hidden" name="_service" value="rstats-restart">
 			<input type="hidden" name="rstats_enable">
 			<input type="hidden" name="rstats_path">

@@ -182,7 +182,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="advanced-routing.asp">
+		<input type="hidden" name="_nextpage" value="/#advanced-routing.asp">
 		<input type="hidden" name="_service" value="routing-restart">
 
 		<input type="hidden" name="routes_static">

@@ -42,7 +42,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="advanced-misc.asp">
+		<input type="hidden" name="_nextpage" value="/#advanced-misc.asp">
 		<input type="hidden" name="_reboot" value="0">
 
 		<input type="hidden" name="jumbo_frame_enable">

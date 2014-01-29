@@ -124,7 +124,7 @@ No part of this file may be used without permission.
 		</script>
 	  
 			<form id="_fom" method="post" action="javascript:{}">
-			<input type="hidden" name="_nextpage" value="forward-basic-ipv6.asp">
+			<input type="hidden" name="_nextpage" value="/#forward-basic-ipv6.asp">
 			<input type="hidden" name="_service" value="firewall-restart">
 			<input type="hidden" name="ipv6_portforward">
 

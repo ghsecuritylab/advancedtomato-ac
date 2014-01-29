@@ -809,7 +809,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="advanced-vlan.asp">
+		<input type="hidden" name="_nextpage" value="/#advanced-vlan.asp">
 		<input type="hidden" name="_nextwait" value="30">
 		<input type="hidden" name="_reboot" value="1">
 		<input type="hidden" name="_nvset" value="1">

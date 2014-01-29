@@ -120,7 +120,7 @@ table.fields-table tr td:first-child {
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-	<input type="hidden" name="_nextpage" value="admin-log.asp">
+	<input type="hidden" name="_nextpage" value="/#admin-log.asp">
 	<input type="hidden" name="_service" value="logging-restart">
 
 	<input type="hidden" name="log_remote">

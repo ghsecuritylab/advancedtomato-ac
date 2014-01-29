@@ -45,7 +45,7 @@ No part of this file may be used without permission.
 	</script>
 	<div class="section" id="config-section">
 		<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="admin-snmp.asp">
+		<input type="hidden" name="_nextpage" value="/#admin-snmp.asp">
 		<input type="hidden" name="_service" value="snmp-restart,firewall-restart">
 		<input type="hidden" name="snmp_enable">
 		<input type="hidden" name="snmp_remote">

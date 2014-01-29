@@ -50,7 +50,7 @@ No part of this file may be used without permission.
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-	<input type="hidden" name="_nextpage" value="admin-misc.asp">
+	<input type="hidden" name="_nextpage" value="/#admin-misc.asp">
 
 	<input type="hidden" name="debug_nocommit">
 	<input type="hidden" name="debug_cprintf">

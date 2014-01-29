@@ -189,7 +189,7 @@ LAN Access admin module by Augusto Bott
 	</script>
 
 	<form id="_fom" method="post" action="tomato.cgi">
-	<input type="hidden" name="_nextpage" value="advanced-access.asp">
+	<input type="hidden" name="_nextpage" value="/#advanced-access.asp">
 	<input type="hidden" name="_nextwait" value="10">
 	<input type="hidden" name="_service" value="firewall-restart">
 	<input type="hidden" name="lan_access">

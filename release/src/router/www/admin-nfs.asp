@@ -82,7 +82,7 @@ No part of this file may be used without permission.
 	<div id="main" class="container">
 
 	<form id="_fom" method="post" action="tomato.cgi">
-		<input type="hidden" name="_nextpage" value="admin-nfs.asp">
+		<input type="hidden" name="_nextpage" value="/#admin-nfs.asp">
 		<input type="hidden" name="_service" value="nfs-start">
 		<input type="hidden" name="nfs_enable">
 		<input type="hidden" name="nfs_exports">
