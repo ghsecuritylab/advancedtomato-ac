@@ -158,7 +158,7 @@ function preloader (event) {
 
 	if ($('.preloader').length == false) { 
 		// Show preloader
-		$('body').prepend('<div class="preloader"><div class="spinner"></div> Loading, please wait...</div>');	
+		$('body').prepend('<div class="preloader"><div class="spinner"></div></div>');	
 
 		$('body').mousemove(function(e) {
 			$('.preloader').css({
@@ -170,10 +170,12 @@ function preloader (event) {
 
 	if (event == 'start') {
 
+		$('body').css('cursor', 'progress');
 		$('.preloader').show();
 
 	} else {
 
+		$('body').css('cursor', 'auto');
 		$('.preloader').hide();
 
 	}
@@ -183,7 +185,7 @@ function preloader (event) {
 
 // Ajax Function to load pages
 function loadPage(Page) {
-	
+
 	// Stop any timers there are
 	clearTimeout(window.refTimer);
 
@@ -204,7 +206,10 @@ function loadPage(Page) {
 		$('title').text(window.routerName + title);
 		$('h2.currentpage').text('/ ' + title); 
 		$('.content .ajaxwrap').hide().html(html).fadeIn(400);
-		window.history.pushState({"html":null,"pageTitle": window.routerName + title }, '#'+Page, '#'+Page);
+
+		if (history.pushState) { // Fix issue with IE9 or bellow
+			window.history.pushState({"html":null,"pageTitle": window.routerName + title }, '#'+Page, '#'+Page);
+		}
 
 		// Handle Navigation
 		$('.navigation li ul li').removeClass('active'); // Reset all
@@ -224,8 +229,10 @@ function loadPage(Page) {
 	// ERROR Handler
 	TomatoAJAX.onError = function (x) {
 
-		$('h2.currentpage').text('/ ERROR: ' + x);
-		$('.content .ajaxwrap').hide().html('<h2>ERROR ' + x + '</h2><span style="font-size: 14px;">Something went wrong, if interface became unresponsible please <a href="/">refresh</a> browser window.</span>').fadeIn(200);
+		$('h2.currentpage').text('/ ERROR occured!');
+		$('.content .ajaxwrap').hide().html('<h2>ERROR occured!<i class="icon-cancel" style="font-size: 20px; color: red; vertical-align: top;"></i></h2>\
+			<span style="font-size: 14px;">There has been error while loading a page, please review debug data bellow if this is isolated issue.<br />\
+			Otherwise please contact AdvancedTomato developer <a target="_blank" href="http://at.prahec.com/contact/">Jacky</a>. <br /><br /><pre class="debug">' + x + '</pre><br /><a href="/">Refreshing</a> browser window might help.</span>').fadeIn(200);
 
 		preloader('stop');
 		// Loaded, clear state

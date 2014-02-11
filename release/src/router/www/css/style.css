@@ -261,6 +261,14 @@ small { font-size: 80%; }
 	-webkit-box-shadow: -1px 0 0 #ffffff;
 }
 
+.content .debug {
+	background: #fff;
+	border: 1px solid #F5F5F5;
+	padding: 10px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
 .content:after {
 	content: "";
 	display: table;
