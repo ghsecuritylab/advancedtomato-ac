@@ -28,12 +28,12 @@
 
 		function dhcpc(what)
 		{
-			form.submitHidden('dhcpc.cgi', { exec: what, _redirect: 'status-overview.asp' });
+			form.submitHidden('dhcpc.cgi', { exec: what, _redirect: '/#status-home.asp' });
 		}
 
 		function serv(service, sleep)
 		{
-			form.submitHidden('service.cgi', { _service: service, _redirect: 'status-overview.asp', _sleep: sleep });
+			form.submitHidden('service.cgi', { _service: service, _redirect: '/#status-home.asp', _sleep: sleep });
 		}
 
 		function wan_connect()
@@ -75,7 +75,8 @@
 		{
 			var status, speed;
 
-			if (etherstates.port0 == "disable") { return false; }
+			if (etherstates.port0 == "disable" || typeof (etherstates.port0) == 'undefined' || typeof (etherstates.port1) == 'undefined'
+			|| typeof (etherstates.port2) == 'undefined' || typeof (etherstates.port3) == 'undefined' || typeof (etherstates.port4) == 'undefined') { return false; }
 
 			// Above code checks if ETH ports are Disabled/Enabled
 			var code = '<h3>Ethernet Ports State <a class="ajaxload" href="basic-network.asp"><small>(Configure)</small></a> ' +

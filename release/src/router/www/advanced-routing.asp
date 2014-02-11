@@ -99,7 +99,7 @@ No part of this file may be used without permission.
 			if (E('_f_dr_lan3').disabled)
 				E('_f_dr_lan3').checked = false;
 			E('_f_dr_wan').disabled = (nvram.wan_proto.length == 'disabled');
-			if (E('_f_dr_wan').disabled)
+			if (E('_f_dr_wan') == null || E('_f_dr_wan').disabled)
 				E('_f_dr_wan').checked = false;
 			/* VLAN-END */
 			return 1;

@@ -237,7 +237,7 @@ No part of this file may be used without permission.
 	<h3>Restore</h3>
 	<div class="section" id="restore-section">
 		<form id="restore-form" method="post" action="bwm/restore.cgi?_http_id=<% nv(http_id); %>" encType="multipart/form-data">
-			<input class="uploadfile" type="file" size="40" id="restore-name" name="restore_name">
+			<input class="uploadfile" type="file" size="40" id="restore-name" name="restore_name" accept="application/x-gzip">
 			<button name="f_restore_button" id="restore-button" value="Restore" onclick="restoreButton()" class="btn">Restore <i class="icon-upload"></i></button>
 			<br>
 		</form>

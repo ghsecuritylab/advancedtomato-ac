@@ -26,7 +26,7 @@
 		<a href="logs/view.cgi?which=all&_http_id=<% nv(http_id) %>">View All</a><br><br>
 		<a href="logs/syslog.txt?_http_id=<% nv(http_id) %>">Download Log File</a><br><br>
 		<div class="input-append"><input class="span3" type="text" maxsize="32" id="find-text"> <button value="Find" onclick="find()" class="btn">Find <i class="icon-search"></i></button></div>
-		&nbsp; &raquo; &nbsp;<a href="admin-log.asp">Logging Configuration</a><br><br>
+		&nbsp; &raquo; &nbsp;<a class="ajaxload" href="admin-log.asp">Logging Configuration</a><br><br>
 	</div>
 </div>
 

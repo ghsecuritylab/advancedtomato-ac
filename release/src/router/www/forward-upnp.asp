@@ -37,7 +37,7 @@ No part of this file may be used without permission.
 				form.submitHidden('upnp.cgi', {
 					remove_proto: proto,
 					remove_eport: eport,
-					_redirect: 'forward-upnp.asp' });
+					_redirect: '/#forward-upnp.asp' });
 			}
 
 			function deleteData(data)

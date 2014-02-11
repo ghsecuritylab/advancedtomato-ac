@@ -172,7 +172,7 @@ No part of this file may be used without permission.
 			form.submitHidden('tomato.cgi', {
 				ms_rescan: E('_f_ms_rescan').checked ? 1 : 0,
 				_reboot: 0, _commit: 0, _nvset: 1,
-				_redirect: 'nas-media.asp',
+				_redirect: '/#nas-media.asp',
 				_sleep: '3',
 				_service: 'media-' + (isup ? 're' : '') + 'start'
 			});

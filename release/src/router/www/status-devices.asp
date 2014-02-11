@@ -163,7 +163,7 @@
 			for (i = dhcpd_lease.length - 1; i >= 0; --i) {
 				a = dhcpd_lease[i];
 				e = get(a[2], a[1]);
-				e.lease = '<small><a href="javascript:deleteLease(\'L' + i + '\',\'' + a[1] + '\')" title="Delete Lease" id="L' + i + '">' + a[3] + '</a></small>';
+				e.lease = '<a href="javascript:deleteLease(\'L' + i + '\',\'' + a[1] + '\')" title="Delete Lease" id="L' + i + '">' + a[3] + '</a>';
 				e.name = a[0];
 				/* NOVLAN-BEGIN */
 				e.ifname = nvram.lan_ifname;
@@ -231,15 +231,13 @@
 
 				b = e.mac;
 				if (e.mac.match(/^(..):(..):(..)/)) {
-					b += '<br><small>' +
-					'<a href="http://standards.ieee.org/cgi-bin/ouisearch?' + RegExp.$1 + '-' + RegExp.$2 + '-' + RegExp.$3 + '" target="_new" title="OUI Search">[oui]</a> ' +
-					'<a href="javascript:addStatic(' + i + ')" title="Static Lease...">[static]</a>' +
-					'<a href="javascript:addqoslimit(' + i + ')" title="QoS BW Limiter">[qoslimit]</a>';
+					b += '<br /><a class="btn btn-small" href="http://standards.ieee.org/cgi-bin/ouisearch?' + RegExp.$1 + '-' + RegExp.$2 + '-' + RegExp.$3 + '" target="_new" title="OUI Search">OUI</a> ' +
+					'<a class="btn btn-small" href="javascript:addStatic(' + i + ')" title="Static Lease...">Static</a>' +
+					'<a class="btn btn-small" href="javascript:addqoslimit(' + i + ')" title="QoS BW Limiter">BW Limit</a>';
 
 					if (e.rssi != '') {
-						b += ' <a href="javascript:addWF(' + i + ')" title="Wireless Filter...">[wfilter]</a>';
+						b += ' <a class="btn btn-small" href="javascript:addWF(' + i + ')" title="Wireless Filter...">[wfilter]</a>';
 					}
-					b += '</small>';
 				}
 				else {
 					b = '';

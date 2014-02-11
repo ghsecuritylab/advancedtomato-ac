@@ -23,7 +23,7 @@ No part of this file may be used without permission.
 			}
 			E('_' + service + '_button').disabled = true;
 			form.submitHidden('/service.cgi', {
-				_redirect: 'vpn-pptp.asp',
+				_redirect: '/#vpn-pptp.asp',
 				_service: service + (isup ? '-stop' : '-start')
 			});
 		}
@@ -107,7 +107,7 @@ No part of this file may be used without permission.
 						{ name: 'pptp_client_mru', type: 'text', maxlen: 4, size: 6, value: nvram.pptp_client_mru } ] },
 					{ title: 'Custom Configuration', name: 'pptp_client_custom', type: 'textarea', value: nvram.pptp_client_custom }
 					], '.pptp-conf', 'fields-table');
-				$('.pptp-conf').append('<input type="button" value="' + (pptpup ? 'Stop' : 'Start') + ' Now" onclick="toggle(\'pptpclient\', pptpup)" id="_pptpclient_button" class="btn"><br /><br />');
+				$('.pptp-conf').append('<button type="button" value="' + (pptpup ? 'Stop' : 'Start') + ' Now" onclick="toggle(\'pptpclient\', pptpup)" id="_pptpclient_button" class="btn">' + (pptpup ? 'Stop' : 'Start') + ' Now</button><br /><br />');
 			</script>
 		</div>
 

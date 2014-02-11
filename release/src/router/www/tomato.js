@@ -167,8 +167,11 @@ var fields = {
 		return a;
 	},
 	disableAll: function(e, d) {
+		
 		var i;
-
+		
+		if (e == null) { return false; }
+		
 		if ((typeof(e.tagName) == 'undefined') && (typeof(e) != 'string')) {
 			for (i = e.length - 1; i >= 0; --i) {
 				e[i].disabled = d;

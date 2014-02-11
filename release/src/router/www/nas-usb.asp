@@ -268,12 +268,12 @@ No part of this file may be used without permission.
 		<input type="hidden" name="usb_printer_bidirect">
 		<input type="hidden" name="usb_fs_ext3">
 		<input type="hidden" name="usb_fs_fat">
-		<!-- NTFS-BEGIN
+		/* NTFS-BEGIN */
 		<input type="hidden" name="usb_fs_ntfs">
-		NTFS-END -->
-		<!-- HFS-BEGIN
+		/* NTFS-END */
+		/* HFS-BEGIN */
 		<input type="hidden" name="usb_fs_hfs">
-		HFS-END -->
+		/* HFS-END */
 		<input type="hidden" name="usb_automount">
 		/* LINUX26-BEGIN */
 		<input type="hidden" name="idle_enable">
@@ -301,27 +301,33 @@ No part of this file may be used without permission.
 						/* NTFS-BEGIN */
 						{ suffix: '&nbsp; NTFS &nbsp;&nbsp;&nbsp;', name: 'f_ntfs', type: 'checkbox', value: nvram.usb_fs_ntfs == 1 },
 						/* NTFS-END */
-						{ suffix: '&nbsp; FAT &nbsp;', name: 'f_fat', type: 'checkbox', value: nvram.usb_fs_fat == 1 },
-						{ suffix: '&nbsp; HFS &nbsp;', name: 'f_hfs', type: 'checkbox', value: nvram.usb_fs_hfs == 1 },
-						{ suffix: '&nbsp; HFS+ &nbsp;', name: 'f_hfsplus', type: 'checkbox', value: nvram.usb_fs_hfsplus == 1 }
+						{ suffix: '&nbsp; FAT &nbsp;', name: 'f_fat', type: 'checkbox', value: nvram.usb_fs_fat == 1 }
+						/* HFS-BEGIN */
+						,{ suffix: '&nbsp; HFS / HFS+ &nbsp;', name: 'f_hfs', type: 'checkbox', value: nvram.usb_fs_hfs == 1 }
+						/* HFS-END */
 					] },
 					/* LINUX26-BEGIN */
-					/* EXTRAS-BEGIN */
+					/* MICROSD-BEGIN */
 					{ title: 'SD/MMC Card Support', indent: 2, name: 'f_mmc', type: 'checkbox', value: nvram.usb_mmc == 1 },
-					/* EXTRAS-END */
+					/* MICROSD-END */
 					/* LINUX26-END */
 					{ title: 'Automount', indent: 2, name: 'f_automount', type: 'checkbox',
 						suffix: ' <small>Automatically mount all partitions to sub-directories in <i>/mnt</i>.</small>', value: nvram.usb_automount == 1 },
 					{ title: 'Run after mounting', indent: 2, name: 'script_usbmount', type: 'textarea', value: nvram.script_usbmount },
 					{ title: 'Run before unmounting', indent: 2, name: 'script_usbumount', type: 'textarea', value: nvram.script_usbumount },
+					null,
 					/* LINUX26-BEGIN */
 					{ title: 'HDD Spindown', name: 'f_idle_enable', type: 'checkbox',
-						suffix: ' <small>Spin down each HDD when idle (not for use with Flashdrive)</small>', value: nvram.idle_enable == 1 },
+						suffix: ' <small>Spin down each HDD when idle. No need to use with flashdrive.</small>', value: nvram.idle_enable == 1 },
+					null,
 					{ title: 'USB 3G Modem support', name: 'f_usb_3g', type: 'checkbox',
-						suffix: ' <small>Before disconnecting 3G Modem from USB port, remember to uncheck this box first. If your modem uses the usbserial module, you may have to reboot your router before plugging/unplugging the modem.</small>', value: nvram.usb_3g == 1 },
+						suffix: ' <small>Before disconnecting 3G Modem from USB port, remember to uncheck box. If modem used usbserial module, you have to reboot router before unplug modem.</small>', value: nvram.usb_3g == 1 },
+					null,
+					/* LINUX26-END */
 					{ title: 'Hotplug script<br><small>(called when any USB device is attached or removed)</small>', name: 'script_usbhotplug', type: 'textarea', value: nvram.script_usbhotplug },
+					null,
 					{ text: '<small>Some of the changes will take effect only after a restart.</small>' }
-				], '.usbfields', 'fields-table');
+					], '.usbfields', 'fields-table');
 			</script>
 		</div>
 
