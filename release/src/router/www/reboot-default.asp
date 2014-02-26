@@ -90,14 +90,12 @@ No part of this file may be used without permission.
 				var e = document.getElementById('prog');
 				var d = document.getElementById('progTXT');
 				var c = document.getElementById('continue');
-				var o = document.getElementById('off');
 
 				e.style.width = (((n++) / Max) * 100) + '%';
 				d.innerHTML = (Max - n) + 's';
 
-				if (n == (Max+1)) {
+				if (n == (Max)) {
 					d.innerHTML = '0s';
-					o.style.display = "none";
 					document.getElementById('progbar').style.display = "none";
 					document.getElementById('re').innerHTML = 'Router should be rebooted now !';
 					go();

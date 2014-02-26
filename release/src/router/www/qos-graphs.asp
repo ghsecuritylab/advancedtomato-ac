@@ -73,7 +73,7 @@ No part of this file may be used without permission.
 		function mClick(n)
 		{
 			// One level back or SVG will think we're in IMG folder and pop 500 ERROR
-			location.href = './../qos-detailed.asp?class=' + n;
+			location.href = '/#qos-detailed.asp?class=' + n;
 		}
 
 		function showData()

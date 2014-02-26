@@ -236,7 +236,7 @@
 					'<a class="btn btn-small" href="javascript:addqoslimit(' + i + ')" title="QoS BW Limiter">BW Limit</a>';
 
 					if (e.rssi != '') {
-						b += ' <a class="btn btn-small" href="javascript:addWF(' + i + ')" title="Wireless Filter...">[wfilter]</a>';
+						b += ' <a class="btn btn-small" href="javascript:addWF(' + i + ')" title="Wireless Filter...">Wifi Filter</a>';
 					}
 				}
 				else {

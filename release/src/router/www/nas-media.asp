@@ -263,7 +263,7 @@ No part of this file may be used without permission.
 					{ title: 'TiVo Support', name: 'f_ms_tivo', type: 'checkbox', value: nvram.ms_tivo == '1' },
 					{ title: 'Strictly adhere to DLNA standards', name: 'f_ms_stdlna', type: 'checkbox', value: nvram.ms_stdlna == '1' }
 				], '.mediadlna', 'fields-table');
-				$('.mediadlna').append('<br><input type="button" value="' + (mdup ? 'Res' : 'S') + 'tart Now" onclick="restart(mdup)" id="_restart_button" class="btn">');
+				$('.mediadlna').append('<br><button type="button" value="' + (mdup ? 'Res' : 'S') + 'tart Now" onclick="restart(mdup)" id="_restart_button" class="btn">' + (mdup ? '<i class="icon-reboot"></i> Res' : '<i class="icon-play"></i>S') + 'tart Now</btton>');
 			</script>
 		</div>
 		<span id="notice-msg"></span>
