@@ -186,8 +186,10 @@ function preloader (event) {
 // Ajax Function to load pages
 function loadPage(Page) {
 
-	// Stop any timers there are
-	clearTimeout(window.refTimer);
+	// Fix refreshers when switching pages
+	if (typeof (ref) != 'undefined') {
+		ref.destroy();
+	}
 
 	// Some things that need to be done here =)
 	Page = Page.replace('#', '');
@@ -211,7 +213,8 @@ function loadPage(Page) {
 		if (history.pushState) { // Fix issue with IE9 or bellow
 			window.history.pushState({"html":null,"pageTitle": window.routerName + title }, '#'+Page, '#'+Page);
 		}
-		
+
+
 		// Go back to top
 		$('html,body').scrollTop(0);
 

@@ -158,20 +158,20 @@ var fields = {
 				a.push(e);
 				break;
 			default:
-			if (e.childNodes) {
-				for (var i = 0; i < e.childNodes.length; ++i) {
-					a = a.concat(fields.getAll(e.childNodes[i]));
+				if (e.childNodes) {
+					for (var i = 0; i < e.childNodes.length; ++i) {
+						a = a.concat(fields.getAll(e.childNodes[i]));
+					}
 				}
-			}
 		}
 		return a;
 	},
 	disableAll: function(e, d) {
-		
+
 		var i;
-		
+
 		if (e == null) { return false; }
-		
+
 		if ((typeof(e.tagName) == 'undefined') && (typeof(e) != 'string')) {
 			for (i = e.length - 1; i >= 0; --i) {
 				e[i].disabled = d;
@@ -697,18 +697,18 @@ function ExpandIPv6Address(ip)
 			ip = pre.join(':');
 			break;
 		case 2:
-		pre = a[0].split(':');
-		post = a[1].split(':');
-		n = 8 - pre.length - post.length;
-		for (i=0; i<2; i++) {
-			if (a[i]=='') n++;
-		}
-		if (n < 0) return null;
-		fill = '';
-		while (n-- > 0) fill += ':0';
-		ip = pre.join(':') + fill + ':' + post.join(':');
-		ip = ip.replace(/^:/, '').replace(/:$/, '');
-		break;
+			pre = a[0].split(':');
+			post = a[1].split(':');
+			n = 8 - pre.length - post.length;
+			for (i=0; i<2; i++) {
+				if (a[i]=='') n++;
+			}
+			if (n < 0) return null;
+			fill = '';
+			while (n-- > 0) fill += ':0';
+			ip = pre.join(':') + fill + ':' + post.join(':');
+			ip = ip.replace(/^:/, '').replace(/:$/, '');
+			break;
 		default:
 			return null;
 	}
@@ -1534,17 +1534,17 @@ TomatoGrid.prototype = {
 				if (id) attrib += ' id="' + id + '"';
 				switch (f.type) {
 					case 'password':
-					if (f.peekaboo) {
-						switch (get_config('web_pb', '1')) {
-							case '0':
-								f.type = 'text';
-							case '2':
-								f.peekaboo = 0;
-								break;
+						if (f.peekaboo) {
+							switch (get_config('web_pb', '1')) {
+								case '0':
+									f.type = 'text';
+								case '2':
+									f.peekaboo = 0;
+									break;
+							}
 						}
-					}
-					attrib += ' autocomplete="off"';
-					if (f.peekaboo && id) attrib += ' onfocus=\'peekaboo("' + id + '",1)\'';
+						attrib += ' autocomplete="off"';
+						if (f.peekaboo && id) attrib += ' onfocus=\'peekaboo("' + id + '",1)\'';
 					// drop
 					case 'text':
 						s += '<input type="' + f.type + '" maxlength=' + f.maxlen + common + attrib;
@@ -1552,20 +1552,20 @@ TomatoGrid.prototype = {
 						else s += '>';
 						break;
 					case 'select':
-					s += '<select' + common + attrib + '>';
-					for (var k = 0; k < f.options.length; ++k) {
-						a = f.options[k];
-						if (which == 'edit') {
-							s += '<option value="' + a[0] + '"' + ((a[0] == values[vi]) ? ' selected>' : '>') + a[1] + '</option>';
+						s += '<select' + common + attrib + '>';
+						for (var k = 0; k < f.options.length; ++k) {
+							a = f.options[k];
+							if (which == 'edit') {
+								s += '<option value="' + a[0] + '"' + ((a[0] == values[vi]) ? ' selected>' : '>') + a[1] + '</option>';
+							}
+							else {
+								s += '<option value="' + a[0] + '">' + a[1] + '</option>';
+							}
 						}
-						else {
-							s += '<option value="' + a[0] + '">' + a[1] + '</option>';
-						}
-					}
-					s += '</select>';
-					break;
+						s += '</select>';
+						break;
 					case 'checkbox':
-					
+
 						s += '<input type="checkbox"' + common + attrib;
 						if ((which == 'edit') && (values[vi])) s += ' checked';
 						s += '>';
@@ -1923,7 +1923,7 @@ XmlHttp.prototype = {
 
 function TomatoTimer(func, ms)
 {
-	this.tid = window.refTimer;
+	this.tid = null;
 	this.onTimer = func;
 	if (ms) this.start(ms);
 	return this;
@@ -1931,22 +1931,22 @@ function TomatoTimer(func, ms)
 
 TomatoTimer.prototype = {
 	start: function(ms) {
-		clearTimeout(window.refTimer);
-		window.refTimer = setTimeout(THIS(this, this._onTimer), ms);
+		this.stop();
+		this.tid = setTimeout(THIS(this, this._onTimer), ms);
 	},
 	stop: function() {
-		if (window.refTimer) {
-			clearTimeout(window.refTimer);
-			window.refTimer = null;
+		if (this.tid) {
+			clearTimeout(this.tid);
+			this.tid = null;
 		}
 	},
 
 	isRunning: function() {
-		return (window.refTimer != null);
+		return (this.tid != null);
 	},
 
 	_onTimer: function() {
-		window.refTimer = null;
+		this.tid = null;
 		this.onTimer();
 	},
 
@@ -1958,8 +1958,8 @@ TomatoTimer.prototype = {
 // -----------------------------------------------------------------------------
 
 
-function TomatoRefresh(actionURL, postData, refreshTime, cookieTag) {
-	
+function TomatoRefresh(actionURL, postData, refreshTime, cookieTag)
+{
 	this.setup(actionURL, postData, refreshTime, cookieTag);
 	this.timer = new TomatoTimer(THIS(this, this.start));
 }
@@ -1978,7 +1978,6 @@ TomatoRefresh.prototype = {
 
 	start: function() {
 		var e;
-
 
 		if ((e = E('refresh-time')) != null) {
 			if (this.cookieTag) cookie.set(this.cookieTag, e.value);
@@ -2103,6 +2102,14 @@ TomatoRefresh.prototype = {
 			this.timer.start(v);
 			this.updateUI('wait');
 		}
+	},
+	
+	destroy: function() {
+		
+		this.timer.stop();
+		this.running = 0;
+		this.http = null;
+		
 	}
 }
 
@@ -2120,8 +2127,8 @@ function genStdTimeList(id, zero, min)
 			b.push('<option value=' + v + '>');
 			if (v == 60) b.push('1 minute');
 			else if (v > 60) b.push((v / 60) + ' minutes');
-			else if (v == 1) b.push('1 second');
-			else b.push(v + ' seconds');
+				else if (v == 1) b.push('1 second');
+					else b.push(v + ' seconds');
 		}
 		b.push('</select> ');
 	}
@@ -2347,112 +2354,112 @@ function navi()
 {
 	var menu = [
 		['Status', 				'status', 0, [
-				['Overview',		'home.asp'],
-				['Device List',		'devices.asp'],
-				['Web Usage',		'webmon.asp'],
-				['Logs',			'log.asp'] ] ],
+			['Overview',		'home.asp'],
+			['Device List',		'devices.asp'],
+			['Web Usage',		'webmon.asp'],
+			['Logs',			'log.asp'] ] ],
 		['Basic Settings', 				'basic', 0, [
-				['Network',			'network.asp'],
-/* IPV6-BEGIN */
-				['IPv6',			'ipv6.asp'],
-/* IPV6-END */
-				['Identification',	'ident.asp'],
-				['Time',			'time.asp'],
-				['DDNS',			'ddns.asp'],
-				['DHCP/ARP/BW',		'static.asp'],
-				['Wireless Filter',	'wfilter.asp'] ] ],
+			['Network',			'network.asp'],
+			/* IPV6-BEGIN */
+			['IPv6',			'ipv6.asp'],
+			/* IPV6-END */
+			['Identification',	'ident.asp'],
+			['Time',			'time.asp'],
+			['DDNS',			'ddns.asp'],
+			['DHCP/ARP/BW',		'static.asp'],
+			['Wireless Filter',	'wfilter.asp'] ] ],
 		['Advanced Settings', 			'advanced', 0, [
-				['Access Restriction',        'restrict.asp'],
-				['Conntrack/Netfilter',	'ctnf.asp'],
-				['DHCP/DNS',		'dhcpdns.asp'],
-				['Firewall',		'firewall.asp'],
-/* NOCAT-BEGIN */
-				['Captive Portal',        'splashd.asp'],
-/* NOCAT-END */
-				['MAC Address',		'mac.asp'],
-				['Miscellaneous',	'misc.asp'],
-				['Routing',			'routing.asp'],
-/* TOR-BEGIN */
-				['Tor Project',         'tor.asp'],
-/* TOR-END */
-				['Wireless',		'wireless.asp'],
-				['VLAN',			'vlan.asp'],
-				['LAN Access',			'access.asp'],
-				['Virtual Wireless',		'wlanvifs.asp']
-			] ],
+			['Access Restriction',        'restrict.asp'],
+			['Conntrack/Netfilter',	'ctnf.asp'],
+			['DHCP/DNS',		'dhcpdns.asp'],
+			['Firewall',		'firewall.asp'],
+			/* NOCAT-BEGIN */
+			['Captive Portal',        'splashd.asp'],
+			/* NOCAT-END */
+			['MAC Address',		'mac.asp'],
+			['Miscellaneous',	'misc.asp'],
+			['Routing',			'routing.asp'],
+			/* TOR-BEGIN */
+			['Tor Project',         'tor.asp'],
+			/* TOR-END */
+			['Wireless',		'wireless.asp'],
+			['VLAN',			'vlan.asp'],
+			['LAN Access',			'access.asp'],
+			['Virtual Wireless',		'wlanvifs.asp']
+		] ],
 		['Port Forwarding', 	'forward', 0, [
-				['Basic',			'basic.asp'],
-/* IPV6-BEGIN */
-				['Basic IPv6',		'basic-ipv6.asp'],
-/* IPV6-END */
-				['DMZ',			'dmz.asp'],
-				['Triggered',		'triggered.asp'],
-				['UPnP/NAT-PMP',	'upnp.asp'] ] ],
+			['Basic',			'basic.asp'],
+			/* IPV6-BEGIN */
+			['Basic IPv6',		'basic-ipv6.asp'],
+			/* IPV6-END */
+			['DMZ',			'dmz.asp'],
+			['Triggered',		'triggered.asp'],
+			['UPnP/NAT-PMP',	'upnp.asp'] ] ],
 		['Quality of Service',		'qos', 0, [
-				['Basic Settings',	'settings.asp'],
-				['Classification',	'classify.asp'],
-				['View Graphs',		'graphs.asp'],
-				['View Details',	'detailed.asp'],
-				['Transfer Rates',	'ctrate.asp'],
-				['B/W Limiter',		'qoslimit.asp'] ] ],
-/* USB-BEGIN */
-// ---- !!TB - USB, FTP, Samba, Media Server
+			['Basic Settings',	'settings.asp'],
+			['Classification',	'classify.asp'],
+			['View Graphs',		'graphs.asp'],
+			['View Details',	'detailed.asp'],
+			['Transfer Rates',	'ctrate.asp'],
+			['B/W Limiter',		'qoslimit.asp'] ] ],
+		/* USB-BEGIN */
+		// ---- !!TB - USB, FTP, Samba, Media Server
 		['USB & NAS',            'nas', 0, [
 			['USB Support',            'usb.asp']
-/* FTP-BEGIN */
+			/* FTP-BEGIN */
 			,['FTP Server',            'ftp.asp']
-/* FTP-END */
-/* SAMBA-BEGIN */
+			/* FTP-END */
+			/* SAMBA-BEGIN */
 			,['File Sharing',        'samba.asp']
-/* SAMBA-END */
-/* MEDIA-SRV-BEGIN */
+			/* SAMBA-END */
+			/* MEDIA-SRV-BEGIN */
 			,['Media Server',        'media.asp']
-/* MEDIA-SRV-END */
-/* UPS-BEGIN */
+			/* MEDIA-SRV-END */
+			/* UPS-BEGIN */
 			,['UPS Monitor',        'ups.asp']
-/* UPS-END */
-/* BT-BEGIN */
+			/* UPS-END */
+			/* BT-BEGIN */
 			,['BitTorrent Client',        'bittorrent.asp']
-/* BT-END */
-			] ],
-/* USB-END */
-/* VPN-BEGIN */
+			/* BT-END */
+		] ],
+		/* USB-END */
+		/* VPN-BEGIN */
 		['VPN',            'vpn', 0, [
-/* OPENVPN-BEGIN */
+			/* OPENVPN-BEGIN */
 			['OpenVPN Server',        'server.asp'],
 			['OpenVPN Client',        'client.asp'],
-/* OPENVPN-END */
-/* PPTPD-BEGIN */
+			/* OPENVPN-END */
+			/* PPTPD-BEGIN */
 			['PPTP Server',            'pptp-server.asp'],
 			['PPTP Online',            'pptp-online.asp'],
 			['PPTP Client',            'pptp.asp']
-/* PPTPD-END */
+			/* PPTPD-END */
 		] ],
-/* VPN-END */
+		/* VPN-END */
 		['Administration',		'admin', 0, [
-				['Admin Access',	'access.asp'],
-				['Tomato Anon',     'tomatoanon.asp'],
-				['Bandwidth Monitoring','bwm.asp'],
-				['IP Traffic Monitoring','iptraffic.asp'],
-				['Buttons/LED',	'buttons.asp'],
-/* CIFS-BEGIN */
-				['CIFS Client',		'cifs.asp'],
-/* CIFS-END */
-				['Configuration',	'config.asp'],
-				['Debugging',		'debug.asp'],
-/* JFFS2-BEGIN */
-				['JFFS',			'jffs2.asp'],
-/* JFFS2-END */
-/* NFS-BEGIN */
-				['NFS Server',      'nfs.asp'],
-/* NFS-END */
-				['Logging',			'log.asp'],
-				['Scheduler',		'sched.asp'],
-				['Scripts',			'scripts.asp'],
-/* SNMP-BEGIN */
-				['SNMP',		'snmp.asp'],
-/* SNMP-END */
-				['Upgrade',			'upgrade.asp']
+			['Admin Access',	'access.asp'],
+			['Tomato Anon',     'tomatoanon.asp'],
+			['Bandwidth Monitoring','bwm.asp'],
+			['IP Traffic Monitoring','iptraffic.asp'],
+			['Buttons/LED',	'buttons.asp'],
+			/* CIFS-BEGIN */
+			['CIFS Client',		'cifs.asp'],
+			/* CIFS-END */
+			['Configuration',	'config.asp'],
+			['Debugging',		'debug.asp'],
+			/* JFFS2-BEGIN */
+			['JFFS',			'jffs2.asp'],
+			/* JFFS2-END */
+			/* NFS-BEGIN */
+			['NFS Server',      'nfs.asp'],
+			/* NFS-END */
+			['Logging',			'log.asp'],
+			['Scheduler',		'sched.asp'],
+			['Scripts',			'scripts.asp'],
+			/* SNMP-BEGIN */
+			['SNMP',		'snmp.asp'],
+			/* SNMP-END */
+			['Upgrade',			'upgrade.asp']
 			]
 		],
 
@@ -2511,7 +2518,7 @@ function navi()
 			buf.push('</ul>');
 		}
 	}
-	
+
 	$('.navigation').html('<ul>' + buf.join('') + '</ul>');
 	if (base.length) {
 		if ((base == 'qos') && (name == 'detailed.asp')) name = 'view.asp';
@@ -2550,7 +2557,7 @@ function createFieldTable(flags, desc, writeTo, extraClass)
 		if (v.rid) buf.push(' id="' + v.rid + '"');
 		if (v.hidden) buf.push(' style="display:none"');
 		buf.push('>');
-		
+
 		if (v.help) { v.title += ' (<i class="icon-info icon-normal tooltip" data-info="' + v.help + '"></i>)'; }
 		if (v.text) {
 			if (v.title) {
