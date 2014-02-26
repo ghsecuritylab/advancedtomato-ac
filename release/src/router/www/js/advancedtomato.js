@@ -207,16 +207,19 @@ function loadPage(Page) {
 		$('h2.currentpage').text('/ ' + title); 
 		$('.content .ajaxwrap').hide().html(html).fadeIn(400);
 
+		// Push History
 		if (history.pushState) { // Fix issue with IE9 or bellow
 			window.history.pushState({"html":null,"pageTitle": window.routerName + title }, '#'+Page, '#'+Page);
 		}
+		
+		// Go back to top
+		$('html,body').scrollTop(0);
 
 		// Handle Navigation
 		$('.navigation li ul li').removeClass('active'); // Reset all
 
 		var naviLinks = $(".navigation a[href='#" + Page + "']");
 		$(naviLinks).parent('li').addClass('active');
-
 
 		// Loaded, clear state
 		window.ajaxLoadingState = false;
