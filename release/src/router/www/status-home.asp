@@ -79,7 +79,7 @@
 			|| typeof (etherstates.port2) == 'undefined' || typeof (etherstates.port3) == 'undefined' || typeof (etherstates.port4) == 'undefined') { return false; }
 
 			// Above code checks if ETH ports are Disabled/Enabled
-			var code = '<h3>Ethernet Ports State <a class="ajaxload" href="basic-network.asp"><small>(Configure)</small></a> ' +
+			var code = '<h3>Ethernet Ports State <a class="ajaxload" href="#basic-network.asp"><small>(Configure)</small></a> ' +
 			'<a href="javascript:toggleVisibility(\'lan-ports\');"><span id="sesdiv_lan-ports_showhide"><i class="icon-chevron-down"></i></span></a></h3>';
 			code += '<div id="sesdiv_lan-ports"><div id="ethPorts"><div class="ethCable"></div>';
 
@@ -297,7 +297,7 @@
 								nvram['dhcpd' + j + '_endip'] = x + ((nvram['dhcp' + j + '_start'] * 1) + (nvram['dhcp' + j + '_num'] * 1) - 1);
 							}
 							s += ((s.length>0)&&(s.charAt(s.length-1) != ' ')) ? ', ' : '';
-							s += '<a class="ajaxload" href="status-devices.asp">' + nvram['dhcpd' + j + '_startip'] + ' - ' + nvram['dhcpd' + j + '_endip'] + '</a> on LAN' + j + ' (br' + i + ')';
+							s += '<a class="ajaxload" href="#status-devices.asp">' + nvram['dhcpd' + j + '_startip'] + ' - ' + nvram['dhcpd' + j + '_endip'] + '</a> on LAN' + j + ' (br' + i + ')';
 						} else {
 							s += ((s.length>0)&&(s.charAt(s.length-1) != ' ')) ? ', ' : '';
 							s += 'Disabled on LAN' + j + ' (br' + i + ')';
@@ -325,7 +325,7 @@
 						nvram.dhcpd_startip = x + nvram.dhcp_start;
 						nvram.dhcpd_endip = x + ((nvram.dhcp_start * 1) + (nvram.dhcp_num * 1) - 1);
 					}
-					s = '<a class="ajaxload" href="status-devices.asp">' + nvram.dhcpd_startip + ' - ' + nvram.dhcpd_endip + '</a>';
+					s = '<a class="ajaxload" href="#status-devices.asp">' + nvram.dhcpd_startip + ' - ' + nvram.dhcpd_endip + '</a>';
 				}
 				else {
 					s = 'Disabled';

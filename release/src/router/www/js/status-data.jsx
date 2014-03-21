@@ -87,7 +87,7 @@ do {
 		u = wl_unit(uidx);
 		a = i = wlstats[uidx].channel * 1;
 		if (i < 0) i = -i;
-		stats.channel.push('<a class="ajaxload" href="tools-survey.asp">' + ((i) ? i + '' : 'Auto') +
+		stats.channel.push('<a class="ajaxload" href="#tools-survey.asp">' + ((i) ? i + '' : 'Auto') +
 			((wlstats[uidx].mhz) ? ' - ' + (wlstats[uidx].mhz / 1000.0).toFixed(3) + ' <small>GHz</small>' : '') + '</a>' +
 			((a < 0) ? ' <small>(scanning...)</small>' : ''));
 		stats.interference.push((wlstats[uidx].intf >= 0) ? ((wlstats[uidx].intf) ? 'Severe' : 'Acceptable') : '');

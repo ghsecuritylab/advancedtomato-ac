@@ -1,65 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<meta http-equiv="content-type" content="text/html;charset=utf-8">
-		<meta name="robots" content="noindex,nofollow">
-		<title>[<% ident(); %>]: Basic</title>
-		<link href="css/reset.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<% css(); %>
-		
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="tomato.js"></script>
-		<script type="text/javascript" src="js/advancedtomato.js"></script>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <meta name="robots" content="noindex,nofollow">
+        <title>[<% ident(); %>]: Basic</title>
+            <link href="css/reset.css" rel="stylesheet">
+            <link href="css/style.css" rel="stylesheet">
+            <link rel="shortcut icon" href="/favicon.ico" />
+            <% css(); %>
 
-		<script type="text/javascript">
-			var routerName = '[<% ident(); %>] ';
-			//<% nvram("at_update,at_width,tomatoanon_answer"); %>
-			//<% anonupdate(); %>
-			// Fix for system data display
-			var refTimer, wl_ifaces = {}, ajaxLoadingState = false;
-		</script>
-	</head>
-	<body>
-		<div id="wrapper">
-			<div class="content-wrap">
-				<div class="header">
-					<div class="titles">
-						<a href="/"><h1>Advanced<span>Tomato</span></h1> <img src="img/logo.svg"></a>
-						<h2 class="currentpage"></h2>
-					</div>
+                <script type="text/javascript" src="js/jquery.min.js"></script>
+                <script type="text/javascript" src="tomato.js"></script>
+                <script type="text/javascript" src="js/advancedtomato.js"></script>
 
-					<div class="pull-right links">
-						<ul>
-							<li><a href="tools-ping.asp">Tools <i class="icon-tools"></i></a></li>
-							<li><a href="bwm-realtime.asp">Bandwidth <i class="icon-graphs"></i></a></li>
-							<li><a href="bwm-ipt-realtime.asp">IP Traffic <i class="icon-globe"></i></a></li>
-							<li><a id="system-ui" href="#system">System <i class="icon-system"></i></a></li>
-						</ul>
-						<div class="system-ui">
+                <script type="text/javascript">
+                    var routerName = '[<% ident(); %>] ';
+                    //<% nvram("at_update,at_width,tomatoanon_answer"); %>
+                    //<% anonupdate(); %>
+                    // Fix for system data display
+                    var refTimer, wl_ifaces = {}, ajaxLoadingState = false;
+                </script>
+            </head>
+            <body>
+                <div id="wrapper">
+                    <div class="content-wrap">
+                        <div class="header">
+                            <div class="titles">
+                                <a href="/"><h1>Advanced<span>Tomato</span></h1> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                                                      width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+                                    <path class="logo-svg" fill-rule="evenodd" clip-rule="evenodd" fill="#4E4E4E" d="M19.491,0.665c-0.139,0.542-0.202,0.609-0.481,0.97
+                                                                                                    c-0.081,0-0.161,0-0.241,0c-0.636,0.936-1.119,2.172-1.204,3.637c0.556-0.142,0.581-0.214,0.964-0.485c0-0.081,0-0.162,0-0.243
+                                                                                                    c0.562-0.081,1.124-0.162,1.685-0.242c0-0.081,0-0.162,0-0.243c0.321,0,0.642,0,0.964,0c0,0.081,0,0.162,0,0.243
+                                                                                                    c0.984,0.258,2.744-0.008,3.371-0.243c0,0.162,0,0.323,0,0.485c-0.08,0-0.161,0-0.241,0c0,0.162,0,0.323,0,0.485
+                                                                                                    c-0.16,0.081-0.321,0.162-0.481,0.243c-0.08,0.242-0.161,0.485-0.241,0.727c-0.161,0-0.321,0-0.481,0
+                                                                                                    c-0.081,0.162-0.161,0.323-0.241,0.485c-0.241,0-0.481,0-0.722,0c0,0.081,0,0.162,0,0.243c-0.948,0.302-1.447-0.326-1.927,0
+                                                                                                    c0.161,0,0.321,0,0.481,0c0.418,0.483,0.55,0.204,0.963,0.485c0.161,0.243,0.321,0.485,0.482,0.728c0.16,0,0.321,0,0.481,0
+                                                                                                    c0.321,0.404,0.643,0.808,0.963,1.212c0.161,0,0.321,0,0.481,0c0,0.081,0,0.162,0,0.243c0.241,0.081,0.481,0.162,0.723,0.242
+                                                                                                    c-0.275,0.276-0.001,0.097-0.482,0.243c-0.344,0.403-1.696,0.803-2.649,0.485c0-0.081,0-0.162,0-0.243c-0.241,0-0.481,0-0.722,0
+                                                                                                    c-0.883-0.646-1.766-1.293-2.649-1.939c-0.08-0.242-0.161-0.485-0.241-0.727c-0.24-0.162-0.481-0.323-0.722-0.485
+                                                                                                    c0,0.162,0,0.324,0,0.485c1.451,1.244,0.854,4.622,0.722,6.789c-0.08,0-0.16,0-0.24,0c-0.562-0.486-1.124-0.971-1.686-1.456
+                                                                                                    c-0.964-1.453-0.676-3.629-0.481-5.576c-0.08,0-0.161,0-0.24,0c0,0.162,0,0.323,0,0.485c-0.081,0-0.161,0-0.241,0
+                                                                                                    c0,0.162,0,0.323,0,0.485c-0.081,0-0.161,0-0.241,0c0,0.162,0,0.323,0,0.485c-0.55,0.802-3.166,2.527-5.057,1.94
+                                                                                                    c0-0.081,0-0.162,0-0.243c-0.562-0.081-1.124-0.162-1.686-0.243c0-0.081,0-0.162,0-0.242c0.161,0,0.321,0,0.482,0
+                                                                                                    c0-0.081,0-0.162,0-0.243c0.241,0,0.481,0,0.722,0c0.08-0.162,0.161-0.323,0.241-0.485c0.481-0.404,0.963-0.808,1.444-1.212
+                                                                                                    c0.401-0.485,0.803-0.97,1.204-1.455c0.6-0.339,1.892-0.026,2.408-0.485c-2.851-0.17-5.468-0.854-5.539-3.879c0.08,0,0.16,0,0.241,0
+                                                                                                    c0.524,0.918,1.28,1.164,2.649,1.212c0.401,0,0.803,0,1.204,0c0,0.081,0,0.162,0,0.243c0.241,0,0.481,0,0.722,0
+                                                                                                    c0.08,0.162,0.161,0.323,0.241,0.485c0.161,0,0.321,0,0.482,0c0,0.081,0,0.162,0,0.243c0.24,0.162,0.481,0.323,0.723,0.485
+                                                                                                    c0,0.162,0,0.323,0,0.485c0.08,0,0.16,0,0.24,0c0-0.162,0-0.323,0-0.485c0.471-0.433,0.205-0.463,0.481-0.97
+                                                                                                    c0.081,0,0.161,0,0.241,0c0-0.162,0-0.324,0-0.485c0.08,0,0.16,0,0.241,0c0-0.162,0-0.323,0-0.485c0.08,0,0.161,0,0.241,0
+                                                                                                    c0.081-0.242,0.161-0.485,0.241-0.727c0.161-0.081,0.321-0.162,0.481-0.243c0.461-0.675,0.283-0.969,1.204-1.212
+                                                                                                    c0-0.081,0-0.162,0-0.243C19.01,0.503,19.25,0.583,19.491,0.665z M7.21,11.332c0,0.081,0.963,0.566,1.445,0.728
+                                                                                                    c0,0.081,0.802,0.242,1.204,0.242c1.722,0.513,2.71-0.309,4.334-0.485c0.369,2.181,1.992,4.42,4.335,4.607
+                                                                                                    c0.401-0.565,0.802-1.132,1.204-1.697c0.161-1.131,0.321-2.263,0.481-3.395c0.081,0,0.161,0,0.241,0
+                                                                                                    c0.337,0.399,2.566,1.117,3.612,0.728c0-0.081,0-0.162,0-0.243c0.481-0.162,0.963-0.323,1.445-0.485
+                                                                                                    c0.375-0.849,0.816-1.722,1.204-2.667c-1.575-0.011-1.906-0.681-3.13-0.97c0-0.162,0-0.323,0-0.485c0.241,0,1.605-0.808,1.686-0.97
+                                                                                                    c0.08,0,0.241-0.485,0.241-0.728c0.08,0,0.161,0,0.241,0c0,0.081,0,0.162,0,0.243c0.401,0.081,0.802,0.162,1.204,0.242
+                                                                                                    c0,0.081,0.321,0.243,0.481,0.243C27.518,6.402,28,6.726,28.16,6.726c0.401,0.485,0.803,0.97,1.204,1.455
+                                                                                                    c0.16,0.081,0.321,0.162,0.481,0.243c0,0.162,0.321,0.646,0.481,0.727c0,0.162,0.161,0.485,0.241,0.485
+                                                                                                    c0,0.243,0.16,0.728,0.241,0.728c0,0.162,0.161,0.485,0.24,0.485c0,0.323,0.81,4.637,0.482,6.547
+                                                                                                    c-0.063,0.59-0.241,1.131-0.241,1.697c-0.087,0.628-0.241,0.646-0.241,0.97c-0.096,0.175-0.24,0.681-0.24,0.97
+                                                                                                    c-0.081,0-0.241,0.485-0.241,0.727c-0.08,0-0.241,0.485-0.241,0.728c-0.08,0-0.241,0.323-0.241,0.485
+                                                                                                    c-0.08,0-0.401,0.646-0.481,0.97c-0.16,0.081-0.642,0.889-0.722,1.212c-0.241,0.162-0.723,0.808-0.723,0.97
+                                                                                                    c-0.481,0.404-0.963,0.808-1.445,1.212c-0.161,0.243-0.321,0.485-0.481,0.728c-0.161,0-0.803,0.485-0.963,0.728
+                                                                                                    c-0.161,0-0.642,0.323-0.723,0.485c-0.321,0.081-0.963,0.404-0.963,0.485c-0.321,0.081-0.963,0.404-0.963,0.485
+                                                                                                    c-0.497,0.131-0.634,0.169-0.722,0.242c-0.071,0-0.165,0.139-0.482,0.243c-0.941,0.369-5.767,1.151-7.224,0.728
+                                                                                                    c0-0.081-0.963-0.243-1.444-0.243c0-0.081-0.643-0.242-0.963-0.242c0-0.081-0.301-0.161-0.723-0.243
+                                                                                                    c0-0.081-0.481-0.243-0.723-0.243c0-0.081-0.321-0.242-0.481-0.242c0-0.081-0.321-0.243-0.481-0.243
+                                                                                                    c0-0.081-0.321-0.242-0.481-0.242c0-0.081-0.321-0.243-0.482-0.243c0-0.081-0.321-0.242-0.481-0.242
+                                                                                                    c-0.08-0.162-0.562-0.485-0.723-0.485c-0.16-0.243-0.802-0.728-0.963-0.728c-0.482-0.565-0.963-1.131-1.445-1.697
+                                                                                                    c-0.321-0.242-0.642-0.485-0.963-0.727c0-0.162-0.481-0.808-0.722-0.97c0-0.162-0.321-0.646-0.482-0.728
+                                                                                                    c-0.08-0.323-0.401-0.97-0.481-0.97C2.073,22.647,1.752,22,1.672,22c-0.161-0.728-0.643-2.182-0.723-2.182
+                                                                                                    c0-0.485-0.16-1.455-0.241-1.455c-0.505-1.804,0.496-6.934,0.963-8.001c0.08,0,0.401-0.646,0.481-0.97
+                                                                                                    c0.081,0,0.241-0.323,0.241-0.485C2.555,8.827,2.876,8.342,2.876,8.18C3.036,8.1,3.197,8.019,3.357,7.938
+                                                                                                    c0.401-0.485,0.803-0.97,1.204-1.455c0.321-0.081,0.643-0.162,0.963-0.242c0.08-0.162,0.161-0.323,0.241-0.485
+                                                                                                    c0.321-0.081,0.643-0.162,0.963-0.243c0-0.081,0-0.162,0-0.242c0.321,0,0.642,0,0.963,0c0-0.081,0-0.162,0-0.243
+                                                                                                    c0.4-0.153,0.645-0.116,0.963-0.242C8.802,6.381,9.378,5.908,10.1,6.726C9.699,7.21,9.297,7.695,8.896,8.18
+                                                                                                    c-0.161,0-0.321,0-0.482,0c-0.08,0.162-0.161,0.323-0.241,0.485C7.451,8.908,6.809,11.009,7.21,11.332z"/>
+                                    </svg></a>
+                                <h2 class="currentpage"></h2>
+                            </div>
 
-							<div class="datasystem align center"></div>
+                            <div class="pull-right links">
+                                <ul>
+                                    <li><a href="#tools-ping.asp">Tools <i class="icon-tools"></i></a></li>
+                                    <li><a href="#bwm-realtime.asp">Bandwidth <i class="icon-graphs"></i></a></li>
+                                    <li><a href="#bwm-ipt-realtime.asp">IP Traffic <i class="icon-globe"></i></a></li>
+                                    <li><a id="system-ui" href="#system">System <i class="icon-system"></i></a></li>
+                                </ul>
+                                <div class="system-ui">
 
-							<hr><div class="align center">
-								<a href="#" class="btn btn-primary" onclick="reboot();">Reboot <i class="icon-reboot"></i></a>
-								<a href="#" class="btn btn-danger" onclick="shutdown();">Shutdown <i class="icon-power"></i></a>
-								<a href="#" onclick="logout();" class="btn">Logout <i class="icon-logout"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
+                                    <div class="datasystem align center"></div>
 
-				<div class="navigation"></div>
-				<div class="content"><div class="ajaxwrap"></div></div>
-			</div>
+                                    <hr><div class="align center">
+                                    <a href="#" class="btn btn-primary" onclick="reboot();">Reboot <i class="icon-reboot"></i></a>
+                                    <a href="#" class="btn btn-danger" onclick="shutdown();">Shutdown <i class="icon-power"></i></a>
+                                    <a href="#" onclick="logout();" class="btn">Logout <i class="icon-logout"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-			<div class="footer">
-				<div class="copyright"><a href="#" onclick="loadPage('about.asp'); return false;">&copy; AdvancedTomato 2013</a></div>
-				<div class="version">Version: <% version(1); %> &nbsp; <a href="#" class="sticky scrollup"><i class="icon-chevron-up"></i></a></div>
-			</div>
-		</div>
-	</body>
-</html>
+                        <div class="navigation"></div>
+                        <div class="content"><div class="ajaxwrap"></div></div>
+                    </div>
+
+                    <div class="footer">
+                        <div class="copyright"><a href="#" onclick="loadPage('about.asp'); return false;">&copy; AdvancedTomato 2013</a></div>
+                        <div class="version">Version: <% version(1); %> &nbsp; <a href="#" class="sticky scrollup"><i class="icon-chevron-up"></i></a></div>
+                        </div>
+                    </div>
+                </body>
+            </html>

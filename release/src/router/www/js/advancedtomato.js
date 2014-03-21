@@ -12,7 +12,7 @@ function notifications () {
 		var lastUpdate = nvram['at_update'].replace('.', '');
 
 		if (n < lastUpdate || n == null) {
-			$(".content").prepend('<div class="alert info" style="margin: -10px 0 5px;"><a href="#" class="close" data-update="' + nvram.at_update.replace('.','') + '">×</a>\
+			$(".content").prepend('<div class="alert info"><a href="#" class="close" data-update="' + nvram.at_update.replace('.','') + '">×</a>\
 				AdvancedTomato (<b>' + nvram.at_update + '</b>) is now available. <a target="_blank" href="http://at.prahec.com/changelog/">Click here to find out more</a>.</div>');
 		}
 	}
@@ -20,7 +20,7 @@ function notifications () {
 	// Check if tomatoanon is configured
 	if (typeof nvram.tomatoanon_answer !== "undefined") {          
 		if (nvram.tomatoanon_answer != '1') {
-			$('.content').prepend('<div class="alert warning" style="margin: -10px 0 5px;"><b>Attention</b>: You did not configure <b>TomatoAnon project</b> setting.\
+			$('.content').prepend('<div class="alert warning"><b>Attention</b>: You did not configure <b>TomatoAnon project</b> setting.\
 				Please go to <a onclick="loadPage(\'admin-tomatoanon.asp\')" href="#">TomatoAnon configuration page</a> and make a choice.</div>');
 
 		}           
@@ -85,10 +85,10 @@ function AdvancedTomato () {
 
 		if ($(this).hasClass('active')) {
 			$('#system-ui').removeClass('active');	
-			$('.system-ui').css('top', '50px').fadeOut(250);
+			$('.system-ui').fadeOut(250);
 		} else {
 			$(this).addClass('active');	
-			$('.system-ui').css('top', '80px').fadeIn(250);
+			$('.system-ui').fadeIn(250);
 			systemUI();
 		}
 

@@ -241,7 +241,7 @@ No part of this file may be used without permission.
 		
 	</div><br />
 
-	<a href="vpn-pptp-online.asp" class="btn">&raquo; PPTP Online</a>
+	<a href="/#vpn-pptp-online.asp" class="btn">&raquo; PPTP Online</a>
 	<br /><br />
 	<button type="button" value="Save" id="save-button" onclick="save()" class="btn btn-primary">Save <i class="icon-check"></i></button>
 	<button type="button" value="Cancel" id="cancel-button" onclick="javascript:reloadPage();" class="btn">Cancel <i class="icon-cancel"></i></button>
