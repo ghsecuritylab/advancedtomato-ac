@@ -188,10 +188,10 @@
 				if (wl_sunit(uidx)<0)
 					elem.display('b_wl'+wl_fface(uidx)+'_enable', 'b_wl'+wl_fface(uidx)+'_disable', show_radio[uidx]);
 			}
-
-			init();
+            
 			show();
 			ethstates();
+            init();
 		}
 
 		function init() {
