@@ -25,9 +25,9 @@ No part of this file may be used without permission.
 			name = fixFile(E('backup-name').value);
 			if (name.length <= 1) {
 				alert('Invalid filename');
-				return;
+				return false;
 			}
-			location.href = 'bwm/' + name + '.gz?_http_id=' + nvram.http_id;
+			location.href = '/bwm/' + name + '.gz?_http_id=' + nvram.http_id;
 		}
 
 		function restoreButton()
@@ -40,9 +40,9 @@ No part of this file may be used without permission.
 			name = name.toLowerCase();
 			if ((name.length <= 3) || (name.substring(name.length - 3, name.length).toLowerCase() != '.gz')) {
 				alert('Incorrect filename. Expecting a ".gz" file.');
-				return;
+				return false;
 			}
-			if (!confirm('Restore data from ' + name + '?')) return;
+			if (!confirm('Restore data from ' + name + '?')) return false;
 
 			E('restore-button').disabled = 1;
 			fields.disableAll(E('config-section'), 1);
@@ -230,7 +230,7 @@ No part of this file may be used without permission.
 			<script type="text/javascript">
 				$('#backup-section .input-append').prepend('<input size="40" type="text" maxlength="64" id="backup-name" name="backup_name" onchange="backupNameChanged()" value="tomato_rstats_' + nvram.et0macaddr.replace(/:/g, '').toLowerCase() + '">');
 			</script>
-			<button name="f_backup_button" id="backup-button" onclick="backupButton()" value="Backup" class="btn">Backup <i class="icon-download"></i></button>
+			<button name="f_backup_button" id="backup-button" onclick="backupButton(); return false;" value="Backup" class="btn">Backup <i class="icon-download"></i></button>
 		</div>
 	</div>
 
@@ -238,7 +238,7 @@ No part of this file may be used without permission.
 	<div class="section" id="restore-section">
 		<form id="restore-form" method="post" action="bwm/restore.cgi?_http_id=<% nv(http_id); %>" encType="multipart/form-data">
 			<input class="uploadfile" type="file" size="40" id="restore-name" name="restore_name" accept="application/x-gzip">
-			<button name="f_restore_button" id="restore-button" value="Restore" onclick="restoreButton()" class="btn">Restore <i class="icon-upload"></i></button>
+			<button name="f_restore_button" id="restore-button" value="Restore" onclick="restoreButton(); return false;" class="btn">Restore <i class="icon-upload"></i></button>
 			<br>
 		</form>
 	</div>
@@ -249,5 +249,5 @@ No part of this file may be used without permission.
 	&nbsp; <span id="footer-msg" class="alert warning" style="visibility: hidden;"></span>
 
 
-	<script type="text/javascript">verifyFields(null, 1); init();</script>
+	<script type="text/javascript">init(); verifyFields(null, 1);</script>
 </content>

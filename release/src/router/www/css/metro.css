@@ -8,6 +8,13 @@ body {
 }
 
 /* Content Design */
+#wrapper.fixedwidth {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: none;
+    background: transparent;
+    -webkit-border-radius: none;
+}
+
 h1, h2, h3, h4, h5 {
     color: #377796;
     font-weight: 300;
@@ -243,8 +250,15 @@ ul.nav-tabs li a.active {
     background: #24A0DA;
 }
 
-.spinner { 
-    border-color: transparent #377796 #377796 transparent;
+.spinner {
+    border-width: 2px 2px 0 0;
+    border-color: #377796 transparent;
     -webkit-animation: tomato-spinner 1200ms linear infinite;
     animation: tomato-spinner 1200ms linear infinite;  
+}
+
+.spinner.spinner-small {
+    width: 12px;
+    height: 12px;
+    border-width: 1px 1px 0 0;
 }

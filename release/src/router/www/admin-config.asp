@@ -14,7 +14,6 @@ No part of this file may be used without permission.
 
 		function backupNameChanged() {
 
-			$('#backup .input-append').prepend('<input type="text" size="40" maxlength="64" id="backup-name" onchange="backupNameChanged()" value="tomato_v' + ("<% version(); %>".replace(/\./g, "")) + '_m' + nvram.et0macaddr.replace(/:/g, "").substring(6, 12) + '">');
 			var name = fixFile(E('backup-name').value);
 
 			/* Not required
@@ -119,7 +118,7 @@ No part of this file may be used without permission.
 					'</div>');
 			}
 
-			backupNameChanged()
+			$('#backup .input-append').prepend('<input type="text" size="40" maxlength="64" id="backup-name" onchange="backupNameChanged()" value="tomato_v' + ("<% version(); %>".replace(/\./g, "")) + '_m' + nvram.et0macaddr.replace(/:/g, "").substring(6, 12) + '">');
 		</script>
 	</div>
 </content>

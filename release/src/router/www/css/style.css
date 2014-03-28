@@ -15,26 +15,18 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Preloader CSS */
-.preloader {
-    position: absolute;
+/* Fixed width changes some CSS styles */
+#wrapper.fixedwidth {
     display: block;
-    width: 200px;
-    height: 50px;
-    z-index: 1000;
+    height: auto;
+    border: 1px solid #DCDCDC;
+    margin: 0 auto;
+    padding: 0;
+    background: #f9f9f9;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-width: 0 1px;
 }
-
-/* Uncomment to limit GUI to cartain size */
-/* #wrapper {
-width: 1024px; 
-display: block;
-border: 1px solid #DCDCDC;
-margin: 0 auto;
-padding: 0;
-background: #f9f9f9;
-border-radius: 3px;
--webkit-border-radius: 3px;
-} */
 
 /* Replace some general styles (b, h1-h6, etc...) */
 a {
