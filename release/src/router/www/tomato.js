@@ -2468,7 +2468,11 @@ function navi()
 	};
     
     // Add custom menu
-    $.extend(menu, $.parseJSON(nvram.web_nav));
+    try {
+        $.extend(menu, $.parseJSON(nvram.web_nav)); 
+    } catch (e) {
+        console.log('ERROR parsing custom navigation JSON!');
+    }
 
     // Loop Through MENU
     $.each(menu, function (key, linksobj) {
