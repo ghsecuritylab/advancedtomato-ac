@@ -52,8 +52,8 @@ h1, h2, h3, h4, h5 {
 h1 { font-size: 24px; }
 h2 { font-size: 20px; }
 h3 { font-size: 18px; }
-h4 { font-size: 16px; }
-h5 { font-size: 14px; }
+h4 { font-size: 15px; }
+h5 { font-size: 13px; }
 
 small { font-size: 80%; }
 .align { display: block; }
@@ -217,18 +217,19 @@ small { font-size: 80%; }
     color: #535353;
     font-size: 15px;
     padding: 10px;
-    line-height: 40px;
+    line-height: 30px;
 }
 
 .navigation li ul {
     display: none;
+    margin: 0;
 }
 
 
 /* Dropdown, or w/e */
 .navigation li ul li a {
     font-size: 12px;
-    line-height: 30px;
+    line-height: 25px;
 }
 
 .navigation .active > a,
@@ -297,7 +298,7 @@ small { font-size: 80%; }
     display: block;
     float: left;
     width: 580px;
-    padding: 10px;
+    padding: 0;
     margin: 10px;
 }
 

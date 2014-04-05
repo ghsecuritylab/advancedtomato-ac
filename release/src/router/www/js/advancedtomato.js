@@ -1,184 +1,166 @@
 function hideUpdate(version) {
-	cookie.set('latest-update', version);
+    cookie.set('latest-update', version);
 }
 
 function notifications () {
 
-	if (typeof nvram == 'undefined') { return false; }
+    if (typeof nvram == 'undefined') { return false; }
 
-	// Check for update
-	if (typeof nvram.at_update !== "undefined" && nvram.at_update != '') {
-		var n = cookie.get('latest-update');
-		var lastUpdate = nvram['at_update'].replace('.', '');
+    // Check for update
+    if (typeof nvram.at_update !== "undefined" && nvram.at_update != '') {
+        var n = cookie.get('latest-update');
+        var lastUpdate = nvram['at_update'].replace('.', '');
 
-		if (n < lastUpdate || n == null) {
-			$(".content").prepend('<div class="alert info"><a href="#" class="close" data-update="' + nvram.at_update.replace('.','') + '">×</a>\
-				AdvancedTomato (<b>' + nvram.at_update + '</b>) is now available. <a target="_blank" href="http://at.prahec.com/changelog/">Click here to find out more</a>.</div>');
-		}
-	}
+        if (n < lastUpdate || n == null) {
+            $(".content").prepend('<div class="alert info"><a href="#" class="close" data-update="' + nvram.at_update.replace('.','') + '">×</a>\
+AdvancedTomato (<b>' + nvram.at_update + '</b>) is now available. <a target="_blank" href="http://at.prahec.com/changelog/">Click here to find out more</a>.</div>');
+        }
+    }
 
-	// Check if tomatoanon is configured
-	if (typeof nvram.tomatoanon_answer !== "undefined") {          
-		if (nvram.tomatoanon_answer != '1') {
-			$('.content').prepend('<div class="alert warning"><b>Attention</b>: You did not configure <b>TomatoAnon project</b> setting.\
-				Please go to <a onclick="loadPage(\'admin-tomatoanon.asp\')" href="#">TomatoAnon configuration page</a> and make a choice.</div>');
+    // Check if tomatoanon is configured
+    if (typeof nvram.tomatoanon_answer !== "undefined") {          
+        if (nvram.tomatoanon_answer != '1') {
+            $('.content').prepend('<div class="alert warning"><b>Attention</b>: You did not configure <b>TomatoAnon project</b> setting.\
+Please go to <a onclick="loadPage(\'admin-tomatoanon.asp\')" href="#">TomatoAnon configuration page</a> and make a choice.</div>');
 
-		}           
-	}
+        }           
+    }
 
-	// Not notification but gona borrow function :P
-	if (typeof nvram.at_width !== "undefined") {
+    // Not notification but gona borrow function :P
+    if (typeof nvram.at_width !== "undefined") {
 
-		if (nvram.at_width != 'fluid' && nvram.at_width != null) {
-			$('#wrapper').css({
-				'width': nvram.at_width,
-				'display': 'block',
-				'border': '1px solid #DCDCDC',
-				'margin': '0 auto',
-				'padding': '0',
-				'background': '#f9f9f9',
-				'border-radius': '3px',
-				'-webkit-border-radius': '3px'
-			});
-		}	
-	}
+        if (nvram.at_width != 'fluid' && nvram.at_width != null) {
+            $('#wrapper').css('width', nvram.at_width).addClass('fixedwidth');
+        }	
+    }
 }
 
 // Bind Navi etc.
 function AdvancedTomato () {
 
-	// Display Navigation
-	navi();
-	notifications();
+    // Display Navigation
+    navi();
+    notifications();
 
-	// Find current active link
-	$('.navigation > ul > li').each(function(key) {
+    // Find current active link
+    $('.navigation > ul > li').each(function(key) {
 
-		if ($(this).hasClass('active')) {
-			$(this).find('ul').slideDown('300');
-			$(this).find('a:first').append('<i class="icon-chevron-down"></i>');
-		} else {
-			$(this).find('ul').slideUp(150);
-			$(this).find('a:first i').remove();
-		}	
+        if ($(this).hasClass('active')) {
+            $(this).find('ul').slideDown('300');
+            $(this).find('a:first').append('<i class="icon-chevron-down"></i>');
+        } else {
+            $(this).find('ul').slideUp(150);
+            $(this).find('a:first i').remove();
+        }	
 
-	});
+    });
 
-	// Bind for "back" state of browser
-	$(window).hashchange(function(e) {
+    // Bind for "back" state of browser
+    $(window).hashchange(function(e) {
 
-		// Prevent Missmatch on features page
-		((location.hash.replace('#', '') != '') ? loadPage(location.hash.replace('#', '')) : '');
-		return false;
+        // Prevent Missmatch on features page
+        ((location.hash.replace('#', '') != '') ? loadPage(location.hash.replace('#', '')) : '');
+        return false;
 
-	});
+    });
 
-	// Close click handler for updates
-	$('.close').click(function() {
-		var UpdateNTF = $(this).attr('data-update');
-		if (UpdateNTF != null) { hideUpdate(UpdateNTF); }
-		$(this).parent('.alert').hide();
-	});
+    // Close click handler for updates
+    $('.close').click(function() {
+        var UpdateNTF = $(this).attr('data-update');
+        if (UpdateNTF != null) { hideUpdate(UpdateNTF); }
+        $(this).parent('.alert').hide();
+    });
 
-	// System Info box
-	$('#system-ui').on('click', function() {
+    // System Info box
+    $('#system-ui').on('click', function() {
 
-		if ($(this).hasClass('active')) {
-			$('#system-ui').removeClass('active');	
-			$('.system-ui').fadeOut(250);
-		} else {
-			$(this).addClass('active');	
-			$('.system-ui').fadeIn(250);
-			systemUI();
-		}
+        if ($(this).hasClass('active')) {
 
-		return false;
-	});
+            $('#system-ui').removeClass('active');	
+            $('.system-ui').fadeOut(250);
 
-	// Navigation slides
-	$('.navigation > ul > li > a').click(function() {
+        } else {
+                        
+            $(this).addClass('active');	
+            $('.system-ui').fadeIn(250);
+            systemUI();
 
-		if ($(this).parent('li').hasClass('active')) { return false; }
+            $(document).click(function() {$('#system-ui').removeClass('active'); $('.system-ui').fadeOut(250); $(document).unbind('click'); });
+        }
 
-		$('.navigation > ul > li').removeClass('active').find('ul').slideUp('150');
-		$('.navigation > ul > li').find('i').remove();
-		$(this).parent('li').addClass('active');
-		$(this).append('<i class="icon-chevron-down"></i>');
-		$(this).closest('li').find('ul').slideDown('150');
+        return false;
+    });
 
-		return false;
-	});
+    // Navigation slides
+    $('.navigation > ul > li > a').click(function() {
 
-	// Handle ajax loading
-	$('.navigation li ul a, .header .links a[href!="#system"]').on('click', function(e) {
-		loadPage($(this).attr('href'));
-		return false;
-	});
+        if ($(this).parent('li').hasClass('active')) { return false; }
 
-	// Handle Ajax Class Loading
-	$('.ajaxwrap').on('click', '.ajaxload', function(e) {
-		loadPage($(this).attr('href'));
-		return false;
-	});
+        $('.navigation > ul > li').removeClass('active').find('ul').slideUp('150');
+        $('.navigation > ul > li').find('i').remove();
+        $(this).parent('li').addClass('active');
+        $(this).append('<i class="icon-chevron-down"></i>');
+        $(this).closest('li').find('ul').slideDown('150');
+
+        return false;
+    });
+
+    // Handle ajax loading
+    $('.navigation li ul a, .header .links a[href!="#system"]').on('click', function(e) {
+        loadPage($(this).attr('href'));
+        return false;
+    });
+
+    // Handle Ajax Class Loading
+    $('.ajaxwrap').on('click', '.ajaxload', function(e) {
+        loadPage($(this).attr('href'));
+        return false;
+    });
 
 
-	if (window.location.hash.match(/#/)) { loadPage(window.location.hash); } else { loadPage('#status-home.asp'); }
+    if (window.location.hash.match(/#/)) { loadPage(window.location.hash); } else { loadPage('#status-home.asp'); }
 }
 
 
 // Get status of router and fill system-ui with it
 function systemUI () {
 
-	$('.system-ui .datasystem').html('<div class="spinner"></div><br /><br />').addClass('align center');
+    $('.system-ui .datasystem').html('<div class="spinner"></div><br /><br />').addClass('align center');
 
-	systemAJAX = new XmlHttp();
-	systemAJAX.onCompleted = function (data, xml) {
+    systemAJAX = new XmlHttp();
+    systemAJAX.onCompleted = function (data, xml) {
 
-		stats = {};
-		try {
-			eval(data);
-		}
-		catch (ex) {
-			stats = {};
-		}
+        stats = {};
+        try {
+            eval(data);
+        }
+        catch (ex) {
+            stats = {};
+        }
 
-		stats.wanstatus = '<a title="Go to Status Overview" href="#" onclick="loadPage(\'#status-home.asp\');">' + ((stats.wanstatus == 'Connected') ? '<span style="color: green;">' + stats.wanstatus + '</span>' : stats.wanstatus) + '</a>';
-		$('.system-ui .datasystem').html(' <div class="pull-right"><small>(' + stats.uptime + ')</small></div> <h5>' + stats.routermodel + '</h5>'+
-			'<hr><div class="leftblock">CPU:</div><div class="rightblock">' + stats.cpuload + '</div>'+
-			'<div class="leftblock">RAM:</div><div class="rightblock">' + stats.memory + '<div class="progress"><div class="bar" style="width: ' + stats.memoryperc + '"></div></div></div>' +
-			((nvram.swap != null) ? '<div class="leftblock">SWAP:</div><div class="rightblock">' + stats.swap + '<div class="progress"><div class="bar" style="width: ' + stats.swapperc + '"></div></div></div>':'') +
-			'<div class="leftblock">WAN:</div><div class="rightblock">' + stats.wanstatus + ' <small>(' + stats.wanuptime + ')</small></div>').removeClass('align center');
-	}
-	systemAJAX.get('js/status-data.jsx');
+        stats.wanstatus = '<a title="Go to Status Overview" href="#" onclick="loadPage(\'#status-home.asp\');">' + ((stats.wanstatus == 'Connected') ? '<span style="color: green;">' + stats.wanstatus + '</span>' : stats.wanstatus) + '</a>';
+        $('.system-ui .datasystem').html(' <div class="pull-right"><small>(' + stats.uptime + ')</small></div> <h5>' + stats.routermodel + '</h5>'+
+                                         '<hr><div class="leftblock">CPU:</div><div class="rightblock">' + stats.cpuload + '</div>'+
+                                         '<div class="leftblock">RAM:</div><div class="rightblock">' + stats.memory + '<div class="progress"><div class="bar" style="width: ' + stats.memoryperc + '"></div></div></div>' +
+                                         ((nvram.swap != null) ? '<div class="leftblock">SWAP:</div><div class="rightblock">' + stats.swap + '<div class="progress"><div class="bar" style="width: ' + stats.swapperc + '"></div></div></div>':'') +
+                                         '<div class="leftblock">WAN:</div><div class="rightblock">' + stats.wanstatus + ' <small>(' + stats.wanuptime + ')</small></div>').removeClass('align center');
+    }
+    systemAJAX.get('js/status-data.jsx');
 }
 
 
 // Function preloader (Shows preloader close to cursor) 
 function preloader (event) {
 
-	if ($('.preloader').length == false) { 
-		// Show preloader
-		$('body').prepend('<div class="preloader"><div class="spinner"></div></div>');	
+    if (event == 'start') {
 
-		$('body').mousemove(function(e) {
-			$('.preloader').css({
-				'left': e.pageX - $('body').offset().left - 10, //position right side 20px right of cursor X)
-				'top': e.pageY - $('body').offset().top - 10
-			});
-		});	
-	}
+        $('html,a,.btn').attr('style', 'cursor: wait !important');
 
-	if (event == 'start') {
+    } else {
 
-		$('body').css('cursor', 'progress');
-		$('.preloader').show();
+        $('html,a,.btn').removeAttr('style');
 
-	} else {
-
-		$('body').css('cursor', 'auto');
-		$('.preloader').hide();
-
-	}
+    }
 
 }
 
@@ -186,67 +168,67 @@ function preloader (event) {
 // Ajax Function to load pages
 function loadPage(Page) {
 
-	// Fix refreshers when switching pages
-	if (typeof (ref) != 'undefined') {
-		ref.destroy();
-	}
+    // Fix refreshers when switching pages
+    if (typeof (ref) != 'undefined') {
+        ref.destroy();
+    }
 
-	// Some things that need to be done here =)
-	Page = Page.replace('#', '');
-	if (Page == 'status-home.asp' || Page == '/') { Page = 'status-home.asp'; }
-	if (window.ajaxLoadingState) { return false; } else { window.ajaxLoadingState = true; }
+    // Some things that need to be done here =)
+    Page = Page.replace('#', '');
+    if (Page == 'status-home.asp' || Page == '/') { Page = 'status-home.asp'; }
+    if (window.ajaxLoadingState) { return false; } else { window.ajaxLoadingState = true; }
 
-	preloader('start');
+    preloader('start');
 
-	// Tomato XMLHTTP/AJAX
-	TomatoAJAX = new XmlHttp();
-	TomatoAJAX.onCompleted = function (resp, xml) {
+    // Tomato XMLHTTP/AJAX
+    TomatoAJAX = new XmlHttp();
+    TomatoAJAX.onCompleted = function (resp, xml) {
 
-		var dom = $(resp);
-		var title = dom.filter('title').text();
-		var html = dom.filter('content').html();
-		$('title').text(window.routerName + title);
-		$('h2.currentpage').text('/ ' + title); 
-		$('.content .ajaxwrap').hide().html(html).fadeIn(400);
+        var dom = $(resp);
+        var title = dom.filter('title').text();
+        var html = dom.filter('content').html();
+        $('title').text(window.routerName + title);
+        $('h2.currentpage').text('/ ' + title); 
+        $('.content .ajaxwrap').hide().html(html).fadeIn(400);
 
-		// Push History
-		if (history.pushState) { // Fix issue with IE9 or bellow
-			window.history.pushState({"html":null,"pageTitle": window.routerName + title }, '#'+Page, '#'+Page);
-		}
+        // Push History
+        if (history.pushState) { // Fix issue with IE9 or bellow
+            window.history.pushState({"html":null,"pageTitle": window.routerName + title }, '#'+Page, '#'+Page);
+        }
 
 
-		// Go back to top
-		$('html,body').scrollTop(0);
+        // Go back to top
+        $('html,body').scrollTop(0);
 
-		// Handle Navigation
-		$('.navigation li ul li').removeClass('active'); // Reset all
+        // Handle Navigation
+        $('.navigation li ul li').removeClass('active'); // Reset all
 
-		var naviLinks = $(".navigation a[href='#" + Page + "']");
-		$(naviLinks).parent('li').addClass('active');
+        var naviLinks = $(".navigation a[href='#" + Page + "']");
+        $(naviLinks).parent('li').addClass('active');
 
-		// Loaded, clear state
-		window.ajaxLoadingState = false;
+        // Loaded, clear state
+        window.ajaxLoadingState = false;
 
-		// Custom file inputs
-		$("input[type='file']").each(function() { $(this).customFileInput(); });
-		preloader('stop');
-	}
+        // Custom file inputs
+        $("input[type='file']").each(function() { $(this).customFileInput(); });
+        preloader('stop');
+    }
 
-	// ERROR Handler
-	TomatoAJAX.onError = function (x) {
+    // ERROR Handler
+    TomatoAJAX.onError = function (x) {
 
-		$('h2.currentpage').text('/ ERROR occured!');
-		$('.content .ajaxwrap').hide().html('<h2>ERROR occured!<i class="icon-cancel" style="font-size: 20px; color: red; vertical-align: top;"></i></h2>\
-			<span style="font-size: 14px;">There has been error while loading a page, please review debug data bellow if this is isolated issue.<br />\
-			Otherwise please contact AdvancedTomato developer <a target="_blank" href="http://at.prahec.com/contact/">Jacky</a>. <br /><br /><pre class="debug">' + x + '</pre><br /><a href="/">Refreshing</a> browser window might help.</span>').fadeIn(200);
+        $('h2.currentpage').text('/ ERROR occured!');
+        $('.content .ajaxwrap').hide().html('<h2>ERROR occured!<i class="icon-cancel" style="font-size: 20px; color: red; vertical-align: top;"></i></h2>\
+<span style="font-size: 14px;">There has been error while loading a page, please review debug data bellow if this is isolated issue.<br />\
+Otherwise please contact AdvancedTomato developer <a target="_blank" href="http://at.prahec.com/contact/">Jacky</a>. <br /><br /><pre class="debug">' + x + '</pre><br /><a href="/">Refreshing</a> browser window might help.</span>').fadeIn(200);
 
-		preloader('stop');
-		// Loaded, clear state
-		window.ajaxLoadingState = false;	
-	}
+        preloader('stop');
+        // Loaded, clear state
+        window.ajaxLoadingState = false;	
+    }
 
-	// Execute Prototype
-	TomatoAJAX.get(Page);          
+    // Execute Prototype
+    TomatoAJAX.get(Page);          
 
 }
 

@@ -2339,8 +2339,7 @@ function show_notice1(s)
 
 // -----------------------------------------------------------------------------
 
-function myName()
-{
+function myName() {
 	var name, i;
 
 	name = window.location.hash.replace('#', '');
@@ -2352,179 +2351,140 @@ function myName()
 
 function navi()
 {
-	var menu = [
-		['Status', 				'status', 0, [
-			['Overview',		'home.asp'],
-			['Device List',		'devices.asp'],
-			['Web Usage',		'webmon.asp'],
-			['Logs',			'log.asp'] ] ],
-		['Basic Settings', 				'basic', 0, [
-			['Network',			'network.asp'],
+	var htmlmenu = '', activeURL = myName();
+    var menu = {
+        'Status': {
+            'Overview':            'status-home.asp',
+            'Device List':         'status-devices.asp',
+            'Web Usage':           'status-webmon.asp',
+            'Logs':                'status-log.asp'
+        },
+        'Basic Settings': {
+			'Network':             'basic-network.asp',
 			/* IPV6-BEGIN */
-			['IPv6',			'ipv6.asp'],
+			'IPv6':                'basic-ipv6.asp',
 			/* IPV6-END */
-			['Identification',	'ident.asp'],
-			['Time',			'time.asp'],
-			['DDNS',			'ddns.asp'],
-			['DHCP/ARP/BW',		'static.asp'],
-			['Wireless Filter',	'wfilter.asp'] ] ],
-		['Advanced Settings', 			'advanced', 0, [
-			['Access Restriction',        'restrict.asp'],
-			['Conntrack/Netfilter',	'ctnf.asp'],
-			['DHCP/DNS',		'dhcpdns.asp'],
-			['Firewall',		'firewall.asp'],
+			'Identification':      'basic-ident.asp',
+			'Time':                'basic-time.asp',
+			'DDNS':                'basic-ddns.asp',
+			'DHCP/ARP/BW':         'basic-static.asp',
+			'Wireless Filter':     'basic-wfilter.asp'
+        },
+		'Advanced Settings': {
+			'Access Restriction':   'advanced-restrict.asp',
+			'Conntrack/Netfilter':  'advanced-ctnf.asp',
+			'DHCP/DNS':             'advanced-dhcpdns.asp',
+			'Firewall':             'advanced-firewall.asp',
 			/* NOCAT-BEGIN */
-			['Captive Portal',        'splashd.asp'],
+			'Captive Portal':       'advanced-splashd.asp',
 			/* NOCAT-END */
-			['MAC Address',		'mac.asp'],
-			['Miscellaneous',	'misc.asp'],
-			['Routing',			'routing.asp'],
+			'MAC Address':          'advanced-mac.asp',
+			'Miscellaneous':        'advanced-misc.asp',
+			'Routing':              'advanced-routing.asp',
 			/* TOR-BEGIN */
-			['Tor Project',         'tor.asp'],
+			'Tor Project':          'advanced-tor.asp',
 			/* TOR-END */
-			['Wireless',		'wireless.asp'],
-			['VLAN',			'vlan.asp'],
-			['LAN Access',			'access.asp'],
-			['Virtual Wireless',		'wlanvifs.asp']
-		] ],
-		['Port Forwarding', 	'forward', 0, [
-			['Basic',			'basic.asp'],
+			'Wireless':             'advanced-wireless.asp',
+			'VLAN':                 'advanced-vlan.asp',
+			'LAN Access':           'advanced-access.asp',
+			'Virtual Wireless':     'advanced-wlanvifs.asp'
+        },
+		'Port Forwarding': {
+			'Basic':                'forward-basic.asp',
 			/* IPV6-BEGIN */
-			['Basic IPv6',		'basic-ipv6.asp'],
+			'Basic IPv6':           'forward-basic-ipv6.asp',
 			/* IPV6-END */
-			['DMZ',			'dmz.asp'],
-			['Triggered',		'triggered.asp'],
-			['UPnP/NAT-PMP',	'upnp.asp'] ] ],
-		['Quality of Service',		'qos', 0, [
-			['Basic Settings',	'settings.asp'],
-			['Classification',	'classify.asp'],
-			['View Graphs',		'graphs.asp'],
-			['View Details',	'detailed.asp'],
-			['Transfer Rates',	'ctrate.asp'],
-			['B/W Limiter',		'qoslimit.asp'] ] ],
+			'DMZ':                  'forward-dmz.asp',
+			'Triggered':            'forward-triggered.asp',
+			'UPnP/NAT-PMP':         'forward-upnp.asp'
+        },
+		'Quality of Service': {
+			'Basic Settings':       'qos-settings.asp',
+			'Classification':       'qos-classify.asp',
+			'View Graphs':          'qos-graphs.asp',
+			'View Details':         'qos-detailed.asp',
+			'Transfer Rates':       'qos-ctrate.asp',
+			'B/W Limiter':          'qos-qoslimit.asp'
+        },
 		/* USB-BEGIN */
 		// ---- !!TB - USB, FTP, Samba, Media Server
-		['USB & NAS',            'nas', 0, [
-			['USB Support',            'usb.asp']
+		'USB & NAS': {
+			'USB Support':          'nas-usb.asp'
 			/* FTP-BEGIN */
-			,['FTP Server',            'ftp.asp']
+			,'FTP Server':          'nas-ftp.asp'
 			/* FTP-END */
 			/* SAMBA-BEGIN */
-			,['File Sharing',        'samba.asp']
+			,'File Sharing':        'nas-samba.asp'
 			/* SAMBA-END */
 			/* MEDIA-SRV-BEGIN */
-			,['Media Server',        'media.asp']
+			,'Media Server':        'nas-media.asp'
 			/* MEDIA-SRV-END */
 			/* UPS-BEGIN */
-			,['UPS Monitor',        'ups.asp']
+			,'UPS Monitor':         'nas-ups.asp'
 			/* UPS-END */
 			/* BT-BEGIN */
-			,['BitTorrent Client',        'bittorrent.asp']
+			,'BitTorrent Client':   'nas-bittorrent.asp'
 			/* BT-END */
-		] ],
+		},
 		/* USB-END */
 		/* VPN-BEGIN */
-		['VPN',            'vpn', 0, [
+		'VPN': {
 			/* OPENVPN-BEGIN */
-			['OpenVPN Server',        'server.asp'],
-			['OpenVPN Client',        'client.asp'],
+			'OpenVPN Server':       'vpn-server.asp',
+			'OpenVPN Client':       'vpn-client.asp'
 			/* OPENVPN-END */
 			/* PPTPD-BEGIN */
-			['PPTP Server',            'pptp-server.asp'],
-			['PPTP Online',            'pptp-online.asp'],
-			['PPTP Client',            'pptp.asp']
+			,'PPTP Server':         'vpn-pptp-server.asp',
+			'PPTP Online':          'vpn-pptp-online.asp',
+			'PPTP Client':          'vpn-pptp.asp'
 			/* PPTPD-END */
-		] ],
+		},
 		/* VPN-END */
-		['Administration',		'admin', 0, [
-			['Admin Access',	'access.asp'],
-			['Tomato Anon',     'tomatoanon.asp'],
-			['Bandwidth Monitoring','bwm.asp'],
-			['IP Traffic Monitoring','iptraffic.asp'],
-			['Buttons/LED',	'buttons.asp'],
+		'Administration': {
+			'Admin Access':         'admin-access.asp',
+			'Tomato Anon':          'admin-tomatoanon.asp',
+			'Bandwidth Monitoring': 'admin-bwm.asp',
+			'IP Traffic Monitoring':'admin-iptraffic.asp',
+			'Buttons/LED':          'admin-buttons.asp',
 			/* CIFS-BEGIN */
-			['CIFS Client',		'cifs.asp'],
+			'CIFS Client':          'admin-cifs.asp',
 			/* CIFS-END */
-			['Configuration',	'config.asp'],
-			['Debugging',		'debug.asp'],
+			'Configuration':        'admin-config.asp',
+			'Debugging':            'admin-debug.asp',
 			/* JFFS2-BEGIN */
-			['JFFS',			'jffs2.asp'],
+			'JFFS':                 'admin-jffs2.asp',
 			/* JFFS2-END */
 			/* NFS-BEGIN */
-			['NFS Server',      'nfs.asp'],
+			'NFS Server':           'admin-nfs.asp',
 			/* NFS-END */
-			['Logging',			'log.asp'],
-			['Scheduler',		'sched.asp'],
-			['Scripts',			'scripts.asp'],
+			'Logging':              'admin-log.asp',
+			'Scheduler':            'admin-sched.asp',
+			'Scripts':              'admin-scripts.asp',
 			/* SNMP-BEGIN */
-			['SNMP',		'snmp.asp'],
+			'SNMP':                 'admin-snmp.asp',
 			/* SNMP-END */
-			['Upgrade',			'upgrade.asp']
-			]
-		],
-
-	];
-
-	var name, base;
-	var i, j;
-	var buf = [];
-	var sm;
-	var a, b, c;
-	var on1;
-	name = myName();
-	if (name == 'restrict-edit.asp') name = '#restrict.asp';
-	if ((i = name.indexOf('-')) != -1) {
-		base = name.substring(0, i);
-		name = name.substring(i + 1, name.length);
-	}
-	else base = '';
-	for (i = 0; i < menu.length; ++i) {
-		var m = menu[i];
-		if (!m) {
-			continue;
+			'Upgrade':              'admin-upgrade.asp'
 		}
-		if (m.length == 2) {
-			buf.push('<li class="' + (((base == '') && (name == m[1])) ? ' active' : '') + '"><a href="' + m[1] + '" >' + m[0] + '</a></li>');
-		}
-		else {
-			if (base == m[1]) {
-				b = name;
-			}
-			else {
-				a = cookie.get('menu_' + m[1]);
-				b = m[3][0][1];
-				for (j = 0; j < m[3].length; ++j) {
-					if (m[3][j][1] == a) {
-						b = a;
-						break;
-					}
-				}
-			}
-			a = m[1] + '-' + b;
-			on1 = (base == m[1]);
-			buf.push('<li class="' + (on1 ? ' active' : '') + '"><a class="first" href="#' + a + '">' + m[0] + '</a><ul>');
+	};
+    
+    // Add custom menu
+    $.extend(menu, $.parseJSON(nvram.web_nav));
 
-			for (j = 0; j < m[3].length; ++j) {
+    // Loop Through MENU
+    $.each(menu, function (key, linksobj) {
+        
+        var category = '';
+        
+        // Loop Through subcats
+        $.each(linksobj, function(name, link) {
+            category += '<li' + ((activeURL == link) ? ' class="active"' : '') + '><a href="#' + link + '">' + name + '</a></li>';    
+        });
+        
+        htmlmenu += '<li' + (($(category).filter('.active')[0] == null) ? '' : ' class="active"') + '><a href="#">' + key + '</a><ul>' + category + '</ul></li>';    
+        
+    });
 
-				sm = m[3][j];
-				a = m[1] + '-' + sm[1];
-
-
-				if (sm[1].match(/javascript:(.*)/)) a = sm[1];
-
-				if (sm[1] == 'devide') { buf.push('<li class="nav-header">' + sm[0] + '</li>'); } else {
-					buf.push('<li class="' + (((on1) && (name == sm[1])) ? ' active' : '') + '"><a href="#' + a + '">' + sm[0] + '</a></li>'); }
-			}
-			buf.push('</ul>');
-		}
-	}
-
-	$('.navigation').html('<ul>' + buf.join('') + '</ul>');
-	if (base.length) {
-		if ((base == 'qos') && (name == 'detailed.asp')) name = 'view.asp';
-		cookie.set('menu_' + base, name);
-	}
-
+    $('.navigation').html('<ul>' + htmlmenu + '</ul>');
 
 }
 

@@ -17,7 +17,7 @@
 
                 <script type="text/javascript">
                     var routerName = '[<% ident(); %>] ';
-                    //<% nvram("at_update,at_width,tomatoanon_answer"); %>
+                    //<% nvram("web_nav,at_update,at_width,tomatoanon_answer"); %>
                     //<% anonupdate(); %>
                     // Fix for system data display
                     var refTimer, wl_ifaces = {}, ajaxLoadingState = false;
