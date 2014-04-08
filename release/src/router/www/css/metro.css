@@ -8,10 +8,15 @@ body {
 }
 
 /* Content Design */
-#wrapper.fixedwidth {
+body.fixedwidth {
+    background: #f8f8f8;
+}
+
+body.fixedwidth > #wrapper {
     border: 1px solid rgba(0,0,0,0.1);
+    border-width: 0 1px 1px;
     border-radius: none;
-    background: transparent;
+    background: #fff;
     -webkit-border-radius: none;
 }
 

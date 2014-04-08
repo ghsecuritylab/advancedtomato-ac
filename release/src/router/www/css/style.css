@@ -16,7 +16,11 @@ body {
 }
 
 /* Fixed width changes some CSS styles */
-#wrapper.fixedwidth {
+body.fixedwidth {
+    background: #ffffff;
+}
+
+body.fixedwidth > #wrapper {
     display: block;
     height: auto;
     border: 1px solid #DCDCDC;
@@ -25,7 +29,7 @@ body {
     background: #f9f9f9;
     border-radius: 3px;
     -webkit-border-radius: 3px;
-    border-width: 0 1px;
+    border-width: 0 1px 1px;
 }
 
 /* Replace some general styles (b, h1-h6, etc...) */

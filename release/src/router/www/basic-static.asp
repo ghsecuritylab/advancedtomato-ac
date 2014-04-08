@@ -347,8 +347,8 @@ No part of this file may be used without permission.
 					<ul>
 						<li>To specify multiple hostnames for a device, separate them with spaces.</li>
 						<li>To enable/enforce static ARP binding for a particular device, it must have only one MAC associated with that particular IP address (i.e. you can"t have two MAC addresses linked to the same hostname/device in the table above).</li>
-						<li>When ARP binding is enabled for a particular MAC/IP address pair, that device will always be shown as "active" in the <a href="tools-wol.asp">Wake On LAN</a> table.</li>
-						<li>See also the <a href="advanced-dhcpdns.asp">Advanced DHCP/DNS</a> settings page for more DHCP-related configuration options.</li>
+						<li>When ARP binding is enabled for a particular MAC/IP address pair, that device will always be shown as "active" in the <a href="#tools-wol.asp">Wake On LAN</a> table.</li>
+						<li>See also the <a href="#advanced-dhcpdns.asp">Advanced DHCP/DNS</a> settings page for more DHCP-related configuration options.</li>
 					</ul>
 				</ul>
 			</small>

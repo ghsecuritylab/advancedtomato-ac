@@ -2471,7 +2471,7 @@ function navi()
     try {
         $.extend(menu, $.parseJSON(nvram.web_nav)); 
     } catch (e) {
-        console.log('ERROR parsing custom navigation JSON!');
+        console.log('Failed to parse custom navigation (might not be set)');
     }
 
     // Loop Through MENU

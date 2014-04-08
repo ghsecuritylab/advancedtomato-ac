@@ -30,7 +30,8 @@ Please go to <a onclick="loadPage(\'admin-tomatoanon.asp\')" href="#">TomatoAnon
     if (typeof nvram.at_width !== "undefined") {
 
         if (nvram.at_width != 'fluid' && nvram.at_width != null) {
-            $('#wrapper').css('width', nvram.at_width).addClass('fixedwidth');
+            $('#wrapper').css('width', nvram.at_width);
+            $('body').addClass('fixedwidth');
         }	
     }
 }
@@ -80,7 +81,7 @@ function AdvancedTomato () {
             $('.system-ui').fadeOut(250);
 
         } else {
-                        
+
             $(this).addClass('active');	
             $('.system-ui').fadeIn(250);
             systemUI();
