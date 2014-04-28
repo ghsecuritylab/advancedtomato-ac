@@ -94,9 +94,9 @@
                                     <div class="datasystem align center"></div>
 
                                     <hr><div class="align center">
-                                    <a href="#" class="btn btn-primary" onclick="reboot();">Reboot <i class="icon-reboot"></i></a>
-                                    <a href="#" class="btn btn-danger" onclick="shutdown();">Shutdown <i class="icon-power"></i></a>
-                                    <a href="#" onclick="logout();" class="btn">Logout <i class="icon-logout"></i></a>
+                                    <a class="btn btn-primary" onclick="reboot();">Reboot <i class="icon-reboot"></i></a>
+                                    <a class="btn btn-danger" onclick="shutdown();">Shutdown <i class="icon-power"></i></a>
+                                    <a onclick="logout();" class="btn">Logout <i class="icon-logout"></i></a>
                                     </div>
                                 </div>
                             </div>
