@@ -96,7 +96,7 @@
 		function addqoslimit(n)
 		{
 			var e = list[n];
-			cookie.set('addqoslimit', [e.ip, e.name.split(',')[0]].join(','), 1);
+			cookie.set('addbwlimit', [e.mac, e.name.split(',')[0]].join(','), 1);
 			location.href = '#qos-qoslimit.asp';
 		}
 
